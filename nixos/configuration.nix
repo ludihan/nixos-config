@@ -98,7 +98,6 @@
         ];
     };
 
-    # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
     users.users.ludihan = {
         isNormalUser = true;
         extraGroups = [
@@ -108,6 +107,7 @@
             "video"
             "docker"
         ];
+        shell = pkgs.bash;
     };
 
     services = {

@@ -1,4 +1,8 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }: 
+let
+    homeManagerSessionVars = "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh";
+in
+{
     # You can import other home-manager modules here
     imports = [
         # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -30,37 +34,54 @@
         };
     };
 
-    home = rec {
-        username = "ludihan";
-        homeDirectory = "/home/ludihan";
-        preferXdgDirectories = true;
-        sessionVariables = rec {
-            GOPATH = "$XDG_DATA_HOME/go";
-            CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
-            PYTHON_HISTORY = "$XDG_STATE_HOME/python_history";
-            PYTHONPYCACHEPREFIX = "$XDG_CACHE_HOME/python";
-            PYTHONUSERBASE = "($XDG_DATA_HOME)/python";
-            PSQL_HISTORY = "($XDG_STATE_HOME)/psql_history";
-            SQLITE_HISTORY = "($XDG_STATE_HOME)/sqlite_history";
-            NPM_CONFIG_USERCONFIG = "($XDG_CONFIG_HOME)/npm/npmrc";
-            CARGO_HOME = "($XDG_DATA_HOME)/cargo";
-            RUSTUP_HOME = "($XDG_DATA_HOME)/rustup";
-            NODE_REPL_HISTORY = "($XDG_STATE_HOME)/node_repl_history";
-            DOCKER_CONFIG = "($XDG_CONFIG_HOME)/docker";
+    xdg.enable = true;
+    programs.bash = {
+        enable = true;
+        sessionVariables = 
+        let
+                data   = d: "${config.home.homeDirectory}/.local/share/${d}";
+                cache  = d: "${config.home.homeDirectory}/.cache/${d}";
+                state  = d: "${config.home.homeDirectory}/.local/state/${d}";
+                configDir = d: "${config.home.homeDirectory}/.config/${d}";
+        in
+        {
+            GOPATH         = data "go";
+            PYTHONUSERBASE = data "python";
+            CARGO_HOME     = data "cargo";
+            RUSTUP_HOME    = data "rustup";
+            OPAMROOT       = data "opam";
+
+            CUDA_CACHE_PATH     = cache "nv";
+            PYTHONPYCACHEPREFIX = cache "python";
+            NUGET_PACKAGES      = cache "NuGetPackages";
+
+            PYTHON_HISTORY    = state "python_history";
+            PSQL_HISTORY      = state "psql_history";
+            SQLITE_HISTORY    = state "sqlite_history";
+            NODE_REPL_HISTORY = state "node_repl_history";
+
+            NPM_CONFIG_USERCONFIG = configDir "npm/npmrc";
+            DOCKER_CONFIG         = configDir "docker";
+            OMNISHARPHOME         = configDir "omnisharp";
+            _JAVA_OPTIONS         = "-Djava.util.prefs.userRoot=${config.home.homeDirectory}/.config/java";
+
             GHCUP_USE_XDG_DIRS = "true";
-            OPAMROOT = "($XDG_DATA_HOME)/opam";
-            _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=($XDG_CONFIG_HOME)/java";
-            OMNISHARPHOME = "($XDG_CONFIG_HOME)/omnisharp";
-            NUGET_PACKAGES = "($XDG_CACHE_HOME)/NuGetPackages";
             EDITOR = "nvim";
             VISUAL = "nvim";
         };
-        sessionPath = [
-            "$HOME/.local/bin"
-            "$CARGO_HOME/bin"
-            "$GOPATH/bin"
-        ];
+        initExtra = ''
+            export PATH = $PATH:$HOME/.local/bin
+            export PATH = $PATH:$CARGO_HOME/bin
+            export PATH = $PATH:$GOPATH/bin
+        '';
     };
+
+    home = {
+        username = "ludihan";
+        homeDirectory = "/home/ludihan";
+        preferXdgDirectories = true;
+    };
+
     gtk = {
         enable = true;
         theme = {
@@ -72,7 +93,7 @@
             package = pkgs.iconpack-obsidian;
         };
         cursorTheme = {
-            name = "adwaita";
+            name = "Adwaita";
         };
     };
     qt = {
@@ -105,6 +126,7 @@
         rustup
         dotnet-sdk
         go
+        godot
         nodejs
         python3
         uv
@@ -127,7 +149,9 @@
         love
         mednafen
         git
+        swaybg
         lf
+        pavucontrol
         batsignal
         networkmanagerapplet
         unzip
@@ -346,10 +370,12 @@
     xdg.configFile.nushell.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/nushell;
     xdg.configFile.git.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/git;
     xdg.userDirs = {
+        enable = true;
         desktop = null;
         templates = null;
         publicShare = null;
     };
+
     # Nicely reload system units when changing configs
     systemd.user.startServices = "sd-switch";
 
