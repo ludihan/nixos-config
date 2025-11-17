@@ -2,7 +2,7 @@
 let
     homeManagerSessionVars = "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh";
 in
-{
+    {
     # You can import other home-manager modules here
     imports = [
         # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -38,37 +38,36 @@ in
     programs.bash = {
         enable = true;
         sessionVariables = 
-        let
+            let
                 data   = d: "${config.home.homeDirectory}/.local/share/${d}";
                 cache  = d: "${config.home.homeDirectory}/.cache/${d}";
                 state  = d: "${config.home.homeDirectory}/.local/state/${d}";
                 configDir = d: "${config.home.homeDirectory}/.config/${d}";
-        in
-        {
-            GOPATH         = data "go";
-            PYTHONUSERBASE = data "python";
-            CARGO_HOME     = data "cargo";
-            RUSTUP_HOME    = data "rustup";
-            OPAMROOT       = data "opam";
+            in {
+                GOPATH         = data "go";
+                PYTHONUSERBASE = data "python";
+                CARGO_HOME     = data "cargo";
+                RUSTUP_HOME    = data "rustup";
+                OPAMROOT       = data "opam";
 
-            CUDA_CACHE_PATH     = cache "nv";
-            PYTHONPYCACHEPREFIX = cache "python";
-            NUGET_PACKAGES      = cache "NuGetPackages";
+                CUDA_CACHE_PATH     = cache "nv";
+                PYTHONPYCACHEPREFIX = cache "python";
+                NUGET_PACKAGES      = cache "NuGetPackages";
 
-            PYTHON_HISTORY    = state "python_history";
-            PSQL_HISTORY      = state "psql_history";
-            SQLITE_HISTORY    = state "sqlite_history";
-            NODE_REPL_HISTORY = state "node_repl_history";
+                PYTHON_HISTORY    = state "python_history";
+                PSQL_HISTORY      = state "psql_history";
+                SQLITE_HISTORY    = state "sqlite_history";
+                NODE_REPL_HISTORY = state "node_repl_history";
 
-            NPM_CONFIG_USERCONFIG = configDir "npm/npmrc";
-            DOCKER_CONFIG         = configDir "docker";
-            OMNISHARPHOME         = configDir "omnisharp";
-            _JAVA_OPTIONS         = "-Djava.util.prefs.userRoot=${config.home.homeDirectory}/.config/java";
+                NPM_CONFIG_USERCONFIG = configDir "npm/npmrc";
+                DOCKER_CONFIG         = configDir "docker";
+                OMNISHARPHOME         = configDir "omnisharp";
+                _JAVA_OPTIONS         = "-Djava.util.prefs.userRoot=${config.home.homeDirectory}/.config/java";
 
-            GHCUP_USE_XDG_DIRS = "true";
-            EDITOR = "nvim";
-            VISUAL = "nvim";
-        };
+                GHCUP_USE_XDG_DIRS = "true";
+                EDITOR = "nvim";
+                VISUAL = "nvim";
+            };
         initExtra = ''
             export PATH=$PATH:$HOME/.local/bin
             export PATH=$PATH:$CARGO_HOME/bin
@@ -363,12 +362,17 @@ in
         '';
     };
 
-    xdg.configFile.nvim.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/nvim;
-    xdg.configFile.niri.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/niri;
-    xdg.configFile.lf.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/lf;
-    xdg.configFile.npm.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/npm;
-    xdg.configFile.nushell.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/nushell;
-    xdg.configFile.git.source = config.lib.file.mkOutOfStoreSymlink /home/ludihan/.config/home-manager/config/git;
+    xdg.configFile =
+        let
+            link = name: config.lib.file.mkOutOfStoreSymlink "${inputs.self}/config/${name}";
+        in {
+            nvim.source     = link "nvim";
+            niri.source     = link "niri";
+            lf.source       = link "lf";
+            npm.source      = link "npm";
+            nushell.source  = link "nushell";
+            git.source      = link "git";
+        };
     xdg.userDirs = {
         enable = true;
         desktop = null;
