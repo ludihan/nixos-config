@@ -143,6 +143,7 @@ in
         docker-buildx
         hyprpicker
         spotify
+        wl-clipboard
         brightnessctl
         imv
         inxi
