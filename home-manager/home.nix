@@ -248,7 +248,6 @@ in
     services.mako = {
         enable = true;
         extraConfig = ''
-            font=Terminus 10
             default-timeout=10000
             background-color=#222222
             border-color=#666666
@@ -378,7 +377,6 @@ in
     programs.zathura = {
         enable = true;
         extraConfig = ''
-        set font "Terminus 12"
         set selection-clipboard clipboard
         map <C--> zoom out
         map = zoom in
