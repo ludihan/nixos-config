@@ -15,22 +15,48 @@
             pkgs = nixpkgs.legacyPackages.${system};
         in {
             nixosConfigurations = {
-                nixos = nixpkgs.lib.nixosSystem {
+                #nixos = nixpkgs.lib.nixosSystem {
+                #    specialArgs = {inherit inputs;};
+
+                #    modules = [./nixos/configuration.nix];
+
+                #};
+                nixos-desktop = nixpkgs.lib.nixosSystem {
                     specialArgs = {inherit inputs;};
 
-                    modules = [./nixos/configuration.nix];
+                    modules = [
+                        ./hosts/desktop
+                    ];
+
+                };
+                nixos-laptop = nixpkgs.lib.nixosSystem {
+                    specialArgs = {inherit inputs;};
+
+                    modules = [
+                        ./hosts/laptop
+                    ];
 
                 };
             };
 
             homeConfigurations = {
-                "ludihan" = home-manager.lib.homeManagerConfiguration {
+                "ludihan@nixos-desktop" = home-manager.lib.homeManagerConfiguration {
                     inherit pkgs;
 
                     extraSpecialArgs = {inherit inputs;};
 
-                    modules = [./home-manager/home.nix];
+                    modules = [
+                        ./hosts/desktop/home.nix
+                    ];
+                };
+                "ludihan@nixos-laptop" = home-manager.lib.homeManagerConfiguration {
+                    inherit pkgs;
 
+                    extraSpecialArgs = {inherit inputs;};
+
+                    modules = [
+                        ./hosts/laptop/home.nix
+                    ];
                 };
             };
         };
