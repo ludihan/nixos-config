@@ -49,7 +49,7 @@
         settings = {
             # Enable flakes and new 'nix' command
             experimental-features = [
-                "nix-command" 
+                "nix-command"
                 "flakes"
             ];
             # Opinionated: disable global registry
@@ -134,6 +134,7 @@
 
     # not present in home manager
     programs.niri.enable = true;
+    programs.xwayland.enable = true;
 
     programs = {
         nautilus-open-any-terminal.enable = true;
@@ -157,6 +158,12 @@
             setSocketVariable = true;
         };
     };
+
+    programs.appimage = {
+        enable = true;
+        binfmt = true;
+    };
+
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     system.stateVersion = "25.05";

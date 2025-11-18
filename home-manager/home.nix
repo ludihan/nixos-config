@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: 
+{ inputs, lib, config, pkgs, ... }:
 let
     homeManagerSessionVars = "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh";
 in
@@ -37,7 +37,7 @@ in
     xdg.enable = true;
     programs.bash = {
         enable = true;
-        sessionVariables = 
+        sessionVariables =
             let
                 data   = d: "${config.home.homeDirectory}/.local/share/${d}";
                 cache  = d: "${config.home.homeDirectory}/.cache/${d}";
@@ -117,7 +117,7 @@ in
     };
 
 
-    home.packages = with pkgs; [ 
+    home.packages = with pkgs; [
         discord
         wget
         curl
@@ -136,7 +136,7 @@ in
         blender
         vivid
         firefox
-        steam 
+        steam
         osu-lazer-bin
         docker-compose
         docker-buildx
@@ -162,7 +162,8 @@ in
         sunvox
         nautilus
         papers
-        drawing
+        tuxpaint
+        xwayland-satellite
         gst_all_1.gst-plugins-good
         gst_all_1.gst-plugins-bad
     ];
