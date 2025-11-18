@@ -22,31 +22,6 @@ cursor {
     xcursor-theme "Adwaita"
 }
 
-input {
-    keyboard {
-        xkb {
-            // layout "br"
-            options "compose:caps"
-        }
-
-        repeat-delay 300
-        repeat-rate 30
-        numlock
-    }
-
-    touchpad {
-        tap
-        natural-scroll
-        middle-emulation
-        accel-profile "flat"
-    }
-
-    mouse {
-        accel-profile "flat"
-    }
-}
-
-
 layout {
     // gaps 0
     focus-ring {

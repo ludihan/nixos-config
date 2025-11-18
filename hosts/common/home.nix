@@ -9,7 +9,7 @@ in
         # inputs.nix-colors.homeManagerModule
 
         # You can also split up your configuration and import pieces of it here:
-        # ./nvim.nix
+        ./modules/niri
     ];
 
     nixpkgs = {
@@ -397,9 +397,9 @@ in
             link = name: config.lib.file.mkOutOfStoreSymlink "${inputs.self}/config/${name}";
         in {
             nvim.source     = link "nvim";
-            niri.source     = link "niri";
             npm.source      = link "npm";
-        };
+    };
+
     xdg.userDirs = {
         enable = true;
         desktop = null;
