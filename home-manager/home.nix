@@ -163,6 +163,7 @@ in
         nautilus
         papers
         tuxpaint
+        aseprite
         xwayland-satellite
         gst_all_1.gst-plugins-good
         gst_all_1.gst-plugins-bad
