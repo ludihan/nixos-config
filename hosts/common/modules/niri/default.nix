@@ -15,6 +15,7 @@
         // spawn-sh-at-startup "swaybg -i ~/.config/home-manager/bg -c 262626"
         spawn-sh-at-startup "swaybg -c 222222"
         spawn-sh-at-startup "batsignal -b -w 30 -c 15 -d 5 -m 1 -I aefjlaksjd"
+        spawn-sh-at-startup "qs"
 
         output "HDMI-A-2" {
             mode "1920x1080@100.000"

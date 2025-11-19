@@ -177,6 +177,7 @@ in
         xwayland-satellite
         gst_all_1.gst-plugins-good
         gst_all_1.gst-plugins-bad
+        quickshell
     ];
 
     programs.neovim = {
@@ -398,8 +399,9 @@ in
         let
             link = name: config.lib.file.mkOutOfStoreSymlink "${inputs.self}/config/${name}";
         in {
-            nvim.source     = link "nvim";
-            npm.source      = link "npm";
+            nvim.source       = link "nvim";
+            npm.source        = link "npm";
+            quickshell.source = link "quickshell";
     };
 
     xdg.userDirs = {
