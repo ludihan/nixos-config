@@ -14,6 +14,7 @@ return {
             -- "ts_ls",
             "vtsls",
             "vue_ls",
+            "nil_ls",
             "bashls",
             "jsonls",
             "dockerls",
