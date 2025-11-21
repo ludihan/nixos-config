@@ -1,8 +1,14 @@
-{ inputs, lib, config, pkgs, ... }:
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   homeManagerSessionVars = "${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh";
 in
-  {
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -39,53 +45,54 @@ in
     enable = true;
     sessionVariables =
       let
-        data   = d: "${config.home.homeDirectory}/.local/share/${d}";
-        cache  = d: "${config.home.homeDirectory}/.cache/${d}";
-        state  = d: "${config.home.homeDirectory}/.local/state/${d}";
+        data = d: "${config.home.homeDirectory}/.local/share/${d}";
+        cache = d: "${config.home.homeDirectory}/.cache/${d}";
+        state = d: "${config.home.homeDirectory}/.local/state/${d}";
         configDir = d: "${config.home.homeDirectory}/.config/${d}";
-      in {
-        GOPATH         = data "go";
+      in
+      {
+        GOPATH = data "go";
         PYTHONUSERBASE = data "python";
-        CARGO_HOME     = data "cargo";
-        RUSTUP_HOME    = data "rustup";
-        OPAMROOT       = data "opam";
+        CARGO_HOME = data "cargo";
+        RUSTUP_HOME = data "rustup";
+        OPAMROOT = data "opam";
 
-        CUDA_CACHE_PATH     = cache "nv";
+        CUDA_CACHE_PATH = cache "nv";
         PYTHONPYCACHEPREFIX = cache "python";
-        NUGET_PACKAGES      = cache "NuGetPackages";
+        NUGET_PACKAGES = cache "NuGetPackages";
 
-        PYTHON_HISTORY    = state "python_history";
-        PSQL_HISTORY      = state "psql_history";
-        SQLITE_HISTORY    = state "sqlite_history";
+        PYTHON_HISTORY = state "python_history";
+        PSQL_HISTORY = state "psql_history";
+        SQLITE_HISTORY = state "sqlite_history";
         NODE_REPL_HISTORY = state "node_repl_history";
 
         NPM_CONFIG_USERCONFIG = configDir "npm/npmrc";
-        DOCKER_CONFIG         = configDir "docker";
-        OMNISHARPHOME         = configDir "omnisharp";
-        _JAVA_OPTIONS         = "-Djava.util.prefs.userRoot=${config.home.homeDirectory}/.config/java";
+        DOCKER_CONFIG = configDir "docker";
+        OMNISHARPHOME = configDir "omnisharp";
+        _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${config.home.homeDirectory}/.config/java";
 
         GHCUP_USE_XDG_DIRS = "true";
         EDITOR = "nvim";
         VISUAL = "nvim";
       };
     initExtra = ''
-            export PATH=$PATH:$HOME/.local/bin
-            export PATH=$PATH:$CARGO_HOME/bin
-            export PATH=$PATH:$GOPATH/bin
+      export PATH=$PATH:$HOME/.local/bin
+      export PATH=$PATH:$CARGO_HOME/bin
+      export PATH=$PATH:$GOPATH/bin
     '';
   };
   programs.nushell = {
     enable = true;
     extraConfig = ''
-            $env.LS_COLORS = (vivid generate gruvbox-dark)
-            $env.config.edit_mode = 'vi'
-            $env.config = {
-                show_banner: false,
-                table: {
-                    header_on_separator: true,
-                    mode: 'single'
-                }
-            }
+      $env.LS_COLORS = (vivid generate gruvbox-dark)
+      $env.config.edit_mode = 'vi'
+      $env.config = {
+          show_banner: false,
+          table: {
+              header_on_separator: true,
+              mode: 'single'
+          }
+      }
     '';
   };
   # programs.carapace.enable = true;
@@ -220,46 +227,46 @@ in
     enable = true;
     settings = {
       main = {
-        font="Iosevka:size=16";
-        lines=30;
-        dpi-aware=false;
+        font = "Iosevka:size=16";
+        lines = 30;
+        dpi-aware = false;
         terminal = "foot";
       };
       colors = {
-        background="#1A1A1AFF";
-        border="#1A1A1AFF";
-        selection="#505050FF";
-        selection-text="#FFFFFFFF";
-        selection-match="#FE8019FF";
-        input="#FFFFFFFF";
-        text="#AAAAAAAA";
-        match="#FE8019FF";
-        prompt="#FE8019FF";
+        background = "#1A1A1AFF";
+        border = "#1A1A1AFF";
+        selection = "#505050FF";
+        selection-text = "#FFFFFFFF";
+        selection-match = "#FE8019FF";
+        input = "#FFFFFFFF";
+        text = "#AAAAAAAA";
+        match = "#FE8019FF";
+        prompt = "#FE8019FF";
       };
       border = {
-        radius=0;
+        radius = 0;
       };
     };
   };
   programs.tmux = {
     enable = true;
     extraConfig = ''
-            set-window-option -g mode-keys vi
-            bind C-p swapw -d -t -1
-            bind C-n swapw -d -t +1
+      set-window-option -g mode-keys vi
+      bind C-p swapw -d -t -1
+      bind C-n swapw -d -t +1
 
-            bind h selectp -L
-            bind j selectp -D
-            bind k selectp -U
-            bind l selectp -R
+      bind h selectp -L
+      bind j selectp -D
+      bind k selectp -U
+      bind l selectp -R
 
-            bind -r H resizep -L 5
-            bind -r J resizep -D 5
-            bind -r K resizep -U 5
-            bind -r L resizep -R 5
+      bind -r H resizep -L 5
+      bind -r J resizep -D 5
+      bind -r K resizep -U 5
+      bind -r L resizep -R 5
 
-            bind o splitw -h
-            bind i splitw -v
+      bind o splitw -h
+      bind i splitw -v
     '';
   };
   programs.swaylock = {
@@ -273,16 +280,16 @@ in
   services.mako = {
     enable = true;
     extraConfig = ''
-            default-timeout=10000
-            background-color=#222222
-            border-color=#666666
-            text-color=#ffffff
+      default-timeout=10000
+      background-color=#222222
+      border-color=#666666
+      text-color=#ffffff
 
-            [urgency=low]
-            default-timeout=5000
+      [urgency=low]
+      default-timeout=5000
 
-            [urgency=critical]
-            ignore-timeout=1
+      [urgency=critical]
+      ignore-timeout=1
     '';
   };
 
@@ -315,7 +322,7 @@ in
       memory = {
         format = "[MEM:{percentage}%]";
       };
-      temperature ={
+      temperature = {
         critical-threshold = 80;
         format-critical = "[!!{temperatureC}°C!!]";
         format = "[{temperatureC}°C]";
@@ -345,50 +352,50 @@ in
       };
     };
     style = ''
-            * {
-                /* `otf-font-awesome` is required to be installed for icons */
-                font-family: Iosevka;
-                font-feature-settings: "liga off, calt off";
-                border-radius: 0px;
-                /* min-height: 0px; */
-            }
+      * {
+          /* `otf-font-awesome` is required to be installed for icons */
+          font-family: Iosevka;
+          font-feature-settings: "liga off, calt off";
+          border-radius: 0px;
+          /* min-height: 0px; */
+      }
 
-            window#waybar {
-                background-color: #1A1A1A;
-                color: #ffffff;
-                opacity: 1;
-            }
+      window#waybar {
+          background-color: #1A1A1A;
+          color: #ffffff;
+          opacity: 1;
+      }
 
-            #workspaces button {
-                padding: 0 5px;
-                background-color: transparent;
-                color: #ffffff;
-                border: none;
-            }
+      #workspaces button {
+          padding: 0 5px;
+          background-color: transparent;
+          color: #ffffff;
+          border: none;
+      }
 
-            #workspaces button.focused {
-                background-color: #555555;
-                color: #ffffff;
-            }
+      #workspaces button.focused {
+          background-color: #555555;
+          color: #ffffff;
+      }
 
-            #workspaces button.urgent {
-                background-color: #eb4d4b;
-            }
+      #workspaces button.urgent {
+          background-color: #eb4d4b;
+      }
 
-            button:hover {
-                box-shadow: none;
-                /* Remove predefined box-shadow */
-                text-shadow: none;
-                /* Remove predefined text-shadow */
-                background: none;
-                /* Remove predefined background color (white) */
-                transition: none;
-                /* Disable predefined animations */
-            }
+      button:hover {
+          box-shadow: none;
+          /* Remove predefined box-shadow */
+          text-shadow: none;
+          /* Remove predefined text-shadow */
+          background: none;
+          /* Remove predefined background color (white) */
+          transition: none;
+          /* Disable predefined animations */
+      }
 
-            #mode {
-                background-color: #64727D;
-            }
+      #mode {
+          background-color: #64727D;
+      }
     '';
   };
 
@@ -402,9 +409,10 @@ in
   xdg.configFile =
     let
       link = name: config.lib.file.mkOutOfStoreSymlink "${inputs.self}/config/${name}";
-    in {
-      nvim.source       = link "nvim";
-      npm.source        = link "npm";
+    in
+    {
+      nvim.source = link "nvim";
+      npm.source = link "npm";
       quickshell.source = link "quickshell";
     };
 
