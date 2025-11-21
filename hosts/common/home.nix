@@ -358,6 +358,9 @@ in
           font-feature-settings: "liga off, calt off";
           border-radius: 0px;
           /* min-height: 0px; */
+          padding: 0;
+          margin: 0;
+          min-height: 0;
       }
 
       window#waybar {
@@ -374,7 +377,7 @@ in
       }
 
       #workspaces button.focused {
-          background-color: #555555;
+          background-color: #4f4f4f;
           color: #ffffff;
       }
 
