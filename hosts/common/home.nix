@@ -358,8 +358,6 @@ in
           font-feature-settings: "liga off, calt off";
           border-radius: 0px;
           /* min-height: 0px; */
-          padding: 0;
-          margin: 0;
       }
 
       window#waybar {
