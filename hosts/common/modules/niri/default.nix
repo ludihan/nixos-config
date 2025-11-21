@@ -1,5 +1,5 @@
 {...}: {
-    xdg.configFile."niri/config.kdl".text = ''
+  xdg.configFile."niri/config.kdl".text = ''
         environment {
             ELECTRON_OZONE_PLATFORM_HINT "auto"
             _JAVA_AWT_WM_NONREPARENTING "1"
@@ -383,5 +383,5 @@
                 Mod+Shift+grave { previous-window filter="app-id"; }
             }
         }
-    '';
+  '';
 }

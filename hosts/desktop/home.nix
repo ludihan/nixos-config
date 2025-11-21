@@ -1,8 +1,8 @@
 { lib, ... }: {
-    imports = [
-        ../common/home.nix
-    ];
-    xdg.configFile."niri/config.kdl".text = lib.mkAfter ''
+  imports = [
+    ../common/home.nix
+  ];
+  xdg.configFile."niri/config.kdl".text = lib.mkAfter ''
         input {
             keyboard {
                 xkb {
@@ -26,5 +26,5 @@
                 accel-profile "flat"
             }
         }
-    '';
+  '';
 }
