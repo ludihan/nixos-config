@@ -186,6 +186,8 @@ in
     gst_all_1.gst-plugins-bad
     quickshell
     nixfmt
+    nix-output-monitor
+    nvd
   ];
 
   programs.firefox.enable = true;
@@ -404,6 +406,11 @@ in
     config = {
       keep-open = true;
     };
+  };
+
+  programs.nh = {
+    enable = true;
+    flake = "${config.home.homeDirectory}/.nix-config";
   };
 
   xdg.configFile =
