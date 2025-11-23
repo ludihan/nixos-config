@@ -478,10 +478,16 @@
     enable = true;
     desktop = null;
     publicShare = null;
+    templates = null;
   };
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+  };
+  xdg.mime.enable = true;
 
   # Nicely reload system units when changing configs
-  # systemd.user.startServices = "sd-switch";
+  systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.05";

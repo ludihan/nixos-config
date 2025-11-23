@@ -142,10 +142,6 @@
   services.gvfs.enable = true;
 
   programs.nix-ld.enable = true;
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
 
   # not present in home manager
   programs.niri.enable = true;
@@ -158,6 +154,9 @@
       setSocketVariable = true;
     };
   };
+
+  environment.etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+  xdg.menus.enable = true;
 
   programs.appimage = {
     enable = true;
