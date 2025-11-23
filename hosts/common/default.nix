@@ -151,16 +151,6 @@
   programs.niri.enable = true;
   programs.xwayland.enable = true;
 
-  # theme option does not exist in home manager
-  programs.foot = {
-    enable = true;
-    theme = "gruvbox";
-    settings.main = {
-      font = "Iosevka:size=12";
-      resize-by-cells = false;
-    };
-  };
-
   virtualisation.docker = {
     enable = true;
     rootless = {
