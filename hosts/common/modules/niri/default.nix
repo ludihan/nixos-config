@@ -41,9 +41,9 @@
     //      active-color "#C9B990"
     //  }
 
-        // background-color "transparent"
+        background-color "transparent"
 
-        background-color "#222222"
+        // background-color "#222222"
 
         tab-indicator {
             width 10
