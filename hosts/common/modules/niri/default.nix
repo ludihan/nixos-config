@@ -346,7 +346,7 @@
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
         Mod+Shift+E { quit; }
         // Ctrl+Alt+Delete { quit; }
-        Mod+Shift+P { power-off-monitors; }
+        // Mod+Shift+P { power-off-monitors; }
         Mod+Ctrl+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
         Mod+G {
             spawn-sh "foot -a floating micro";

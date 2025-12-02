@@ -206,6 +206,7 @@
     nixfmt
     nix-output-monitor
     nvd
+    wl-mirror
   ];
 
   programs.firefox.enable = true;
