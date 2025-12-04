@@ -522,6 +522,19 @@
     publicShare = null;
   };
   xdg.mime.enable = true;
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "org.gnome.Nautilus.desktop";
+      "application/pdf" = "org.gnome.Papers.desktop";
+      "image/jpg" = "imv.desktop";
+      "image/jpeg" = "imv.desktop";
+      "image/png" = "imv.desktop";
+      "image/webp" = "imv.desktop";
+      "text/*" = "org.gnome.TextEditor.desktop";
+      "text/plain" = "org.gnome.TextEditor.desktop";
+    };
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
