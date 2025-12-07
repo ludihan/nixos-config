@@ -149,7 +149,7 @@
         Mod+Shift+D hotkey-overlay-title="Open Web Browser: firefox" {
             spawn "firefox";
         }
-        Mod+E hotkey-overlay-title="Open File Manager: nautilus" {
+        Mod+Shift+E hotkey-overlay-title="Open File Manager: nautilus" {
             spawn "nautilus";
         }
         Mod+Shift+S hotkey-overlay-title="Run an Application: pavucontrol" {
@@ -161,7 +161,7 @@
         Mod+Shift+A hotkey-overlay-title="Draw Box: slurp" {
             spawn-sh "slurp -b#00000000 -c#C9B990 | grim -g - - | wl-copy";
         }
-        Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" {
+        Mod+Ctrl+BackSpace hotkey-overlay-title="Lock the Screen: swaylock" {
             spawn "swaylock";
         }
 
@@ -330,10 +330,10 @@
         Mod+Shift+Minus { set-window-height "-5%"; }
         Mod+Shift+Equal { set-window-height "+5%"; }
 
-        Mod+Shift+Space { toggle-window-floating; }
-        Mod+Space       { switch-focus-between-floating-and-tiling; }
+        Mod+E { toggle-window-floating; }
+        Mod+W { switch-focus-between-floating-and-tiling; }
 
-        Mod+W { toggle-column-tabbed-display; }
+        Mod+Q { toggle-column-tabbed-display; }
 
         Print       { screenshot; }
         Ctrl+Print  { screenshot-screen; }
@@ -344,14 +344,11 @@
         Mod+F3 { clear-dynamic-cast-target; }
 
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-        Mod+Shift+E { quit; }
+        Mod+Shift+Ctrl+BackSpace { quit; }
         // Ctrl+Alt+Delete { quit; }
         // Mod+Shift+P { power-off-monitors; }
         Mod+Ctrl+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
-        Mod+G {
-            spawn-sh "foot -a floating micro";
-        }
-        Mod+B {
+        Mod+Shift+Ctrl+A {
             spawn-sh "woomer";
         }
     }
