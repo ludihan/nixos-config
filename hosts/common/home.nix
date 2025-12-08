@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -214,6 +215,7 @@
     nicotine-plus
     ncdu
     mangohud
+    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
   ];
 
   programs.firefox.enable = true;

@@ -4,79 +4,59 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     templates.url = "github:nixos/templates";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    todo = {
+      url = "github:ludihan/todo";
+      flake = false;
+    };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      templates,
-      home-manager,
-      nix-index-database,
-      ...
-    }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      nixosConfigurations = {
-        #nixos = nixpkgs.lib.nixosSystem {
-        #    specialArgs = {inherit inputs;};
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-index-database, ... }:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
 
-        #    modules = [./nixos/configuration.nix];
-
-        #};
-        nixos-desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-
-          modules = [
-            ./hosts/desktop
-          ];
-
-        };
-        nixos-laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-
-          modules = [
-            ./hosts/laptop
-          ];
-
-        };
+    hmBase = hostPath:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          hostPath
+          nix-index-database.homeModules.nix-index
+          { programs.nix-index-database.comma.enable = true; }
+        ];
+      };
+  in
+  {
+    nixosConfigurations = {
+      nixos-desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/desktop ];
       };
 
-      homeConfigurations = {
-        "ludihan@nixos-desktop" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = { inherit inputs; };
-
-          modules = [
-            ./hosts/desktop/home.nix
-            nix-index-database.homeModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-          ];
-        };
-        "ludihan@nixos-laptop" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = { inherit inputs; };
-
-          modules = [
-            ./hosts/laptop/home.nix
-            nix-index-database.homeModules.nix-index
-            { programs.nix-index-database.comma.enable = true; }
-          ];
-        };
+      nixos-laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/laptop ];
       };
-      inherit templates;
     };
+
+    homeConfigurations = {
+      "ludihan@nixos-desktop" = hmBase ./hosts/desktop/home.nix;
+      "ludihan@nixos-laptop"  = hmBase ./hosts/laptop/home.nix;
+    };
+
+    templates = inputs.templates;
+
+    packages.${system} = import ./pkgs { inherit inputs pkgs; };
+  };
 }
