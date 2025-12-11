@@ -200,7 +200,6 @@
     gst_all_1.gst-plugins-ugly
     gst_all_1.gst-libav
     ffmpegthumbnailer
-    quickshell
     nixfmt
     nixfmt-tree
     nix-output-monitor
@@ -219,6 +218,8 @@
   ];
 
   programs.firefox.enable = true;
+
+  programs.quickshell.enable = true;
 
   programs.foot = {
     enable = true;
