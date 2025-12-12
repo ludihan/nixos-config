@@ -215,6 +215,7 @@
     mangohud
     file
     kdePackages.qtdeclarative
+    socat
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
   ];
 
