@@ -217,6 +217,7 @@
     kdePackages.qtdeclarative
     socat
     foliate
+    htop
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
   ];
 
