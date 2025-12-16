@@ -3,6 +3,7 @@ import QtQuick
 import Quickshell
 import qs.Bar
 import qs.AudioOSD
+import qs.Background
 
 ShellRoot {
     Loader {
@@ -10,5 +11,8 @@ ShellRoot {
     }
     Loader {
         sourceComponent: Bar {}
+    }
+    Loader {
+        sourceComponent: Background {}
     }
 }

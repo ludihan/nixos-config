@@ -1,18 +1,27 @@
 pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell.Services.SystemTray
+import Quickshell
 import Quickshell.Widgets
 import qs
 
-Repeater {
-    model: SystemTray.items
+Row {
+    id: systemTrayContainer
+    property QsWindow window
 
-    delegate: Rectangle {
-        id: trayItem
-        color: "transparent"
-        required property SystemTrayItem modelData
+    spacing: 2
 
-        Item {
+    Repeater {
+        model: SystemTray.items
+
+        delegate: Rectangle {
+            id: trayItem
+            width: Config.iconSize
+            height: Config.iconSize
+            color: "transparent"
+
+            required property SystemTrayItem modelData
+
             IconImage {
                 id: icon
                 anchors.centerIn: parent
@@ -20,10 +29,12 @@ Repeater {
                 height: Config.iconSize
                 source: trayItem.modelData.icon
                 visible: true
+
                 MouseArea {
                     id: area
                     anchors.fill: parent
                     acceptedButtons: Qt.AllButtons
+
                     onClicked: mouse => {
                         switch (mouse.button) {
                         case Qt.LeftButton:
@@ -33,7 +44,9 @@ Repeater {
                             trayItem.modelData.secondaryActivate();
                             break;
                         case Qt.RightButton:
-                            trayItem.modelData.display(root, area.mouseX, area.mouseY);
+                            var globalPos = area.mapToGlobal(mouse.x, mouse.y);
+
+                            trayItem.modelData.display(systemTrayContainer.window, globalPos.x, globalPos.y);
                             break;
                         }
                     }

@@ -123,9 +123,9 @@ Scope {
                         Layout.fillWidth: true
                     }
 
-                    Tray {}
-
-                    Item {}
+                    Tray {
+                        window: root
+                    }
 
                     Separator {}
 
