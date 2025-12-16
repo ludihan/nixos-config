@@ -1,9 +1,6 @@
 import QtQuick
 import Quickshell
-import QtQuick.Layouts
-import Quickshell.Services.Pipewire
 import Quickshell.Wayland
-import qs
 
 PanelWindow {
     anchors {

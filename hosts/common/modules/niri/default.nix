@@ -57,7 +57,7 @@
     }
 
     layer-rule {
-        match namespace="^wallpaper$"
+        match namespace="^quickshell$"
         place-within-backdrop true
     }
 
@@ -143,8 +143,8 @@
         Mod+Shift+Return hotkey-overlay-title="Open a Floating Terminal: foot" {
             spawn "foot" "-a" "floating";
         }
-        Mod+D hotkey-overlay-title="Run launcher: fuzzel" {
-            spawn "fuzzel";
+        Mod+D hotkey-overlay-title="Run Launcher" {
+            spawn-sh "qs ipc call launcher open";
         }
         Mod+Shift+D hotkey-overlay-title="Open Web Browser: firefox" {
             spawn "firefox";
@@ -152,8 +152,8 @@
         Mod+Shift+E hotkey-overlay-title="Open File Manager: nautilus" {
             spawn "nautilus";
         }
-        Mod+Shift+S hotkey-overlay-title="Run an Application: pavucontrol" {
-            spawn "pavucontrol";
+        Mod+Shift+S hotkey-overlay-title="Open Mixer" {
+            spawn-sh "qs ipc call mixer open";
         }
         Mod+Ctrl+A hotkey-overlay-title="Color Picker: hyprpicker" {
             spawn "hyprpicker" "-a";
@@ -161,7 +161,7 @@
         Mod+Shift+A hotkey-overlay-title="Draw Box: slurp" {
             spawn-sh "slurp -b#00000000 -c#C9B990 | grim -g - - | wl-copy";
         }
-        Mod+Ctrl+BackSpace hotkey-overlay-title="Lock the Screen: swaylock" {
+        Mod+Ctrl+BackSpace hotkey-overlay-title="Lock the Screen" {
             spawn "swaylock";
         }
 

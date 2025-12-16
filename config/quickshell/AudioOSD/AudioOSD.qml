@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Services.Pipewire
-import qs
 
 Scope {
     id: root
@@ -23,17 +22,13 @@ Scope {
         target: Pipewire.defaultAudioSink?.audio
 
         function onVolumeChanged() {
-            if (Global.audioOSD) {
-                root.showOsd = true;
-                osdTimer.restart();
-            }
+            root.showOsd = true;
+            osdTimer.restart();
         }
 
         function onMutedChanged() {
-            if (Global.audioOSD) {
-                root.showOsd = true;
-                osdTimer.restart();
-            }
+            root.showOsd = true;
+            osdTimer.restart();
         }
     }
 
@@ -41,17 +36,13 @@ Scope {
         target: Pipewire.defaultAudioSource?.audio
 
         function onVolumeChanged() {
-            if (Global.audioOSD) {
-                root.showOsd = true;
-                osdTimer.restart();
-            }
+            root.showOsd = true;
+            osdTimer.restart();
         }
 
         function onMutedChanged() {
-            if (Global.audioOSD) {
-                root.showOsd = true;
-                osdTimer.restart();
-            }
+            root.showOsd = true;
+            osdTimer.restart();
         }
     }
 

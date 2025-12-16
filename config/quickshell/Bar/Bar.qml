@@ -115,6 +115,7 @@ Scope {
 
                 RowLayout {
                     anchors.fill: parent
+                    anchors.rightMargin: 5
                     spacing: 15
 
                     Workspaces {}
@@ -150,8 +151,6 @@ Scope {
                     CustomText {
                         text: Qt.formatDateTime(clock.date, "hh:mm:ss - yyyy-MM-dd")
                     }
-
-                    Item {}
                 }
             }
         }
