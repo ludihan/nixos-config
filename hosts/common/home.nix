@@ -183,7 +183,6 @@
     krita
     # love
     mednafen
-    swaybg
     lf
     pavucontrol
     batsignal
@@ -310,31 +309,6 @@
   };
   programs.discord.enable = true;
   programs.home-manager.enable = true;
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = "Iosevka:size=16";
-        lines = 30;
-        dpi-aware = false;
-        terminal = "foot";
-      };
-      colors = {
-        background = "#1A1A1AFF";
-        border = "#1A1A1AFF";
-        selection = "#505050FF";
-        selection-text = "#FFFFFFFF";
-        selection-match = "#FE8019FF";
-        input = "#FFFFFFFF";
-        text = "#AAAAAAAA";
-        match = "#FE8019FF";
-        prompt = "#FE8019FF";
-      };
-      border = {
-        radius = 0;
-      };
-    };
-  };
   programs.tmux = {
     enable = true;
     extraConfig = ''
@@ -377,112 +351,6 @@
 
       [urgency=critical]
       ignore-timeout=1
-    '';
-  };
-
-  programs.waybar = {
-    enable = true;
-    settings.mainBar = {
-      spacing = 10;
-      modules-left = [
-        "niri/workspaces"
-        "niri/window"
-      ];
-      modules-right = [
-        "tray"
-        "pulseaudio"
-        "network"
-        "cpu"
-        "memory"
-        "temperature"
-        "backlight"
-        "battery"
-        "clock"
-      ];
-      clock = {
-        format = "[{:%F %H:%M}]";
-        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-      };
-      cpu = {
-        format = "[CPU:{usage}%]";
-      };
-      memory = {
-        format = "[MEM:{percentage}%]";
-      };
-      temperature = {
-        critical-threshold = 80;
-        format-critical = "[!!{temperatureC}°C!!]";
-        format = "[{temperatureC}°C]";
-      };
-      battery = {
-        states = {
-          good = 95;
-          warning = 30;
-          critical = 15;
-        };
-        format = "[BAT:{capacity}%]";
-      };
-      pulseaudio = {
-        format = "[VOL:{volume}% MIC:{format_source}]";
-        format-muted = "[VOL:{volume}%(MUTE) MIC:{format_source}]";
-        format-source = "{volume}%";
-        format-source-muted = "{volume}%(MIC MUTE)";
-      };
-      network = {
-        format-wifi = "[NET:{signalStrength}%]";
-        format-ethernet = "[NET:{ifname}]";
-        format-linked = "[NET:No IP]";
-        format-disconnected = "[NET:Disconnected]";
-      };
-      backlight = {
-        format = "[BKL: {percent}%]";
-      };
-    };
-    style = ''
-      * {
-          /* `otf-font-awesome` is required to be installed for icons */
-          font-family: Iosevka;
-          font-feature-settings: "liga off, calt off";
-          border-radius: 0px;
-          /* min-height: 0px; */
-      }
-
-      window#waybar {
-          background-color: #1A1A1A;
-          color: #ffffff;
-          opacity: 1;
-      }
-
-      #workspaces button {
-          padding: 0 5px;
-          background-color: transparent;
-          color: #ffffff;
-          border: none;
-      }
-
-      #workspaces button.focused {
-          background-color: #4f4f4f;
-          color: #ffffff;
-      }
-
-      #workspaces button.urgent {
-          background-color: #eb4d4b;
-      }
-
-      button:hover {
-          box-shadow: none;
-          /* Remove predefined box-shadow */
-          text-shadow: none;
-          /* Remove predefined text-shadow */
-          background: none;
-          /* Remove predefined background color (white) */
-          transition: none;
-          /* Disable predefined animations */
-      }
-
-      #mode {
-          background-color: #64727D;
-      }
     '';
   };
 
