@@ -313,6 +313,9 @@
     enable = true;
     extraConfig = ''
       set-window-option -g mode-keys vi
+      set-option -g focus-events on
+      set-option -sg escape-time 10
+      set-option -g default-terminal "screen-256color"
       bind C-p swapw -d -t -1
       bind C-n swapw -d -t +1
 
