@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Services.Pipewire
 import Quickshell.Wayland
 import qs
 
@@ -11,13 +10,6 @@ PanelWindow {
 
     function clear() {
         searchBox.clear();
-    }
-
-    property var config: QtObject {
-        property string fontFamily: "Iosevka"
-        property color muted: "#555555"
-        property color highlight: "#505050"
-        property color text: "#ffffff"
     }
 
     function closeWindow() {
@@ -49,9 +41,9 @@ PanelWindow {
         TextField {
             id: searchBox
             Layout.fillWidth: true
-            font.family: root.config.fontFamily
+            font.family: Config.fontFamily
             font.pixelSize: 22
-            color: root.config.text
+            color: Config.foreground
             focus: true
 
             background: Rectangle {
@@ -59,22 +51,34 @@ PanelWindow {
             }
 
             Keys.onEscapePressed: root.closeWindow()
-
             Keys.onReturnPressed: root.launchCurrent()
             Keys.onEnterPressed: root.launchCurrent()
-
             Keys.onDownPressed: {
                 appList.incrementCurrentIndex();
             }
             Keys.onUpPressed: {
                 appList.decrementCurrentIndex();
             }
+            Keys.onPressed: event => {
+                if (event.modifiers & Qt.ControlModifier) {
+                    switch (event.key) {
+                    case Qt.Key_N:
+                        event.accepted = true;
+                        appList.incrementCurrentIndex();
+                        break;
+                    case Qt.Key_P:
+                        event.accepted = true;
+                        appList.decrementCurrentIndex();
+                        break;
+                    }
+                }
+            }
         }
 
         Rectangle {
             Layout.fillWidth: true
             implicitHeight: 1
-            color: root.config.muted
+            color: Config.muted
             opacity: 0.5
         }
 
@@ -84,14 +88,17 @@ PanelWindow {
             Layout.fillHeight: true
             clip: true
             boundsBehavior: Flickable.StopAtBounds
+            moveDisplaced: Transition {
+                NumberAnimation { properties: "x,y"; duration: 0 }
+            }
 
-            model: DesktopEntries.applications
-
+            model: ScriptModel {
+                values: DesktopEntries.applications.values.filter(x => [x.name, x.genericName, x.execString, x.comment, x.execString, ...x.categories, ...x.keywords].map(x => x.toLowerCase()).some(x => x.includes(searchBox.text.toLowerCase())))
+            }
             delegate: ItemDelegate {
                 id: delegateRoot
                 width: ListView.view.width
-                height: visible ? 50 : 0
-                visible: modelData.name.toLowerCase().includes(searchBox.text.toLowerCase())
+                height: 45
 
                 function launchApp() {
                     console.log("Launching: " + modelData.name);
@@ -100,9 +107,8 @@ PanelWindow {
                 }
 
                 background: Rectangle {
-                    color: delegateRoot.highlighted || delegateRoot.hovered ? root.config.highlight : "transparent"
-                    radius: 4
-                    opacity: (delegateRoot.highlighted || delegateRoot.hovered) ? 0.3 : 0
+                    readonly property bool isSelected: delegateRoot.ListView.isCurrentItem
+                    color: isSelected ? Config.highlight : "transparent"
                 }
 
                 contentItem: RowLayout {
@@ -111,9 +117,9 @@ PanelWindow {
                     Label {
                         text: modelData.name
                         Layout.fillWidth: true
-                        font.family: root.config.fontFamily
+                        font.family: Config.fontFamily
                         font.pixelSize: 18
-                        color: root.config.text
+                        color: Config.foreground
                         elide: Text.ElideRight
                     }
                 }
@@ -122,15 +128,9 @@ PanelWindow {
 
                 MouseArea {
                     anchors.fill: parent
-                    hoverEnabled: true
                     onEntered: appList.currentIndex = index
                     onClicked: delegateRoot.launchApp()
                 }
-            }
-
-            ScrollBar.vertical: ScrollBar {
-                active: true
-                width: 5
             }
         }
     }

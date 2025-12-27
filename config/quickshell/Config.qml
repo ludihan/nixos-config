@@ -11,4 +11,5 @@ Singleton {
     readonly property int fontPointSize: 12
     readonly property string socketPath: Quickshell.env("NIRI_SOCKET")
     readonly property int iconSize: 18
+    readonly property color highlight: "#505050"
 }

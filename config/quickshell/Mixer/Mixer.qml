@@ -7,13 +7,17 @@ import Quickshell.Wayland
 import qs
 
 PanelWindow {
+    id: root
     WlrLayershell.layer: WlrLayer.Overlay
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
     implicitWidth: 800
     implicitHeight: 800
     // match the system theme background color
     color: "#1A1A1A"
 
     ScrollView {
+        focus: true
+        Keys.onEscapePressed: root.visible = false
         anchors.fill: parent
         contentWidth: availableWidth
 

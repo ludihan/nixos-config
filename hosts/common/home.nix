@@ -217,6 +217,8 @@
     socat
     foliate
     htop
+    typst
+    tinymist
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
   ];
 
