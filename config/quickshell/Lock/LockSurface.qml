@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls.Fusion
-import Quickshell.Wayland
+import qs
 
 Rectangle {
     id: root
@@ -29,6 +29,7 @@ Rectangle {
         renderType: Text.NativeRendering
         color: "white"
         font.pointSize: 80
+        font.family: Config.fontFamily
 
         // updates the clock every second
         Timer {
@@ -91,6 +92,7 @@ Rectangle {
 
                 // don't steal focus from the text box
                 focusPolicy: Qt.NoFocus
+                font.family: Config.fontFamily
 
                 enabled: !root.context.unlockInProgress && root.context.currentText !== ""
                 onClicked: root.context.tryUnlock()
