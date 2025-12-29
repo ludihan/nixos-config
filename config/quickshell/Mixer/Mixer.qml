@@ -62,70 +62,69 @@ PanelWindow {
             Repeater {
                 model: Mpris.players
 
-                Rectangle {
+                ColumnLayout {
                     id: mpris
                     required property MprisPlayer modelData
-                    ColumnLayout {
-                        RowLayout {
-                            Label {
-                                color: "#FFFFFF"
-                                font.family: Config.fontFamily
-                                font.pixelSize: 18
-                                elide: Text.ElideRight
-                                Layout.minimumWidth: 695
-                                text: [mpris.modelData.identity || "Unkown Application", mpris.modelData.trackArtists || "Unknown Artists", mpris.modelData.trackTitle || "Unknown Track", mpris.modelData.trackAlbum || "Unknown Album",].join(" - ")
+                    RowLayout {
+                        Label {
+                            color: "#FFFFFF"
+                            font.family: Config.fontFamily
+                            font.pixelSize: 18
+                            elide: Text.ElideRight
+                            Layout.minimumWidth: 695
+                            text: [mpris.modelData.identity || "Unkown Application", mpris.modelData.trackArtists || "Unknown Artists", mpris.modelData.trackTitle || "Unknown Track", mpris.modelData.trackAlbum || "Unknown Album",].join(" - ")
+                        }
+                    }
+                    RowLayout {
+                        ColumnLayout {
+                            Layout.preferredWidth: 500
+                            RowLayout {
+                                Button {
+                                    text: "Quit"
+                                    font.family: Config.fontFamily
+                                    font.pixelSize: 18
+                                    onClicked: mpris.modelData.quit()
+                                }
+                                Button {
+                                    text: "Show album art"
+                                    font.family: Config.fontFamily
+                                    font.pixelSize: 18
+                                    onClicked: art.showArt = !art.showArt
+                                }
+                            }
+                            RowLayout {
+                                Button {
+                                    text: "Stop"
+                                    font.family: Config.fontFamily
+                                    font.pixelSize: 18
+                                    onClicked: mpris.modelData.stop()
+                                }
+                                Button {
+                                    text: "Previous"
+                                    font.family: Config.fontFamily
+                                    font.pixelSize: 18
+                                    onClicked: mpris.modelData.previous()
+                                }
+                                Button {
+                                    text: "Pause/Play"
+                                    font.family: Config.fontFamily
+                                    font.pixelSize: 18
+                                    onClicked: mpris.modelData.togglePlaying()
+                                }
+                                Button {
+                                    text: "Next"
+                                    font.family: Config.fontFamily
+                                    font.pixelSize: 18
+                                    onClicked: mpris.modelData.next()
+                                }
                             }
                         }
-                        RowLayout {
-                            Image {
-                                id: art
-                                property bool showArt: true
-                                Layout.maximumWidth: 250
-                                Layout.maximumHeight: 250
-                                source: showArt ? mpris.modelData.trackArtUrl : ""
-                            }
-                            ColumnLayout {
-                                RowLayout {
-                                    Button {
-                                        text: "Quit"
-                                        font.family: Config.fontFamily
-                                        font.pixelSize: 18
-                                        onClicked: mpris.modelData.quit()
-                                    }
-                                    Button {
-                                        text: "Show album art"
-                                        font.family: Config.fontFamily
-                                        font.pixelSize: 18
-                                        onClicked: art.showArt = !art.showArt
-                                    }
-                                }
-                                RowLayout {
-                                    Button {
-                                        text: "Stop"
-                                        font.family: Config.fontFamily
-                                        font.pixelSize: 18
-                                        onClicked: mpris.modelData.stop()
-                                    }
-                                    Button {
-                                        text: "Previous"
-                                        font.family: Config.fontFamily
-                                        font.pixelSize: 18
-                                        onClicked: mpris.modelData.previous()
-                                    }
-                                    Button {
-                                        text: "Pause/Play"
-                                        font.family: Config.fontFamily
-                                        font.pixelSize: 18
-                                        onClicked: mpris.modelData.togglePlaying()
-                                    }
-                                    Button {
-                                        text: "Next"
-                                        font.family: Config.fontFamily
-                                        font.pixelSize: 18
-                                        onClicked: mpris.modelData.next()
-                                    }
-                                }
-                            }
+                        Image {
+                            id: art
+                            property bool showArt: true
+                            Layout.maximumWidth: 250
+                            Layout.maximumHeight: 250
+                            source: showArt ? mpris.modelData.trackArtUrl : ""
                         }
                     }
                 }
