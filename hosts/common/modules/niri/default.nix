@@ -6,15 +6,8 @@
         _JAVA_AWT_WM_NONREPARENTING "1"
     }
 
-    // spawn-at-startup "waybar"
     // spawn-at-startup "fcitx5"
     spawn-at-startup "nm-applet"
-    // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "gtk-theme" "Adwaita-dark"
-    // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "icon-theme" "Obsidian-Sand"
-    // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "cursor-theme" "Adwaita"
-    // spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "color-scheme" "prefer-dark"
-    // spawn-sh-at-startup "swaybg -i ~/.config/home-manager/bg -c 262626"
-    // spawn-sh-at-startup "swaybg -c 222222"
     spawn-sh-at-startup "batsignal -b -w 30 -c 15 -d 5 -m 1 -I aefjlaksjd"
     spawn-sh-at-startup "qs"
 
@@ -162,7 +155,7 @@
             spawn-sh "slurp -b#00000000 -c#C9B990 | grim -g - - | wl-copy";
         }
         Mod+Ctrl+BackSpace hotkey-overlay-title="Lock the Screen" {
-            spawn "swaylock";
+            spawn-sh "qs ipc call lock lock";
         }
 
         XF86AudioRaiseVolume allow-when-locked=true {

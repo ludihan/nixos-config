@@ -8,12 +8,12 @@ Rectangle {
     required property LockContext context
     readonly property ColorGroup colors: Window.active ? palette.active : palette.inactive
 
-    color: colors.window
+    color: "#222222"
 
-    Button {
-        text: "Its not working, let me out"
-        onClicked: context.unlocked()
-    }
+    // Button {
+        // text: "Its not working, let me out"
+        // onClicked: context.unlocked()
+    // }
 
     Label {
         id: clock
@@ -27,6 +27,7 @@ Rectangle {
 
         // The native font renderer tends to look nicer at large sizes.
         renderType: Text.NativeRendering
+        color: "white"
         font.pointSize: 80
 
         // updates the clock every second

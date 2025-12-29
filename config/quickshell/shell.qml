@@ -8,6 +8,7 @@ import qs.Background
 import qs.Mixer
 import qs.Launcher
 import qs.ReloadPopup
+import qs.Lock
 
 ShellRoot {
     Loader {
@@ -43,11 +44,16 @@ ShellRoot {
         ReloadPopup {}
     }
 
+    Loader {
+        id: lock
+        sourceComponent: Lock {}
+    }
+
     IpcHandler {
         target: "mixer"
 
         function open() {
-            audioOSD.active = !audioOSD.active
+            audioOSD.active = !audioOSD.active;
             launcher.item.visible = false;
             mixer.item.visible = !mixer.item.visible;
         }
@@ -57,9 +63,17 @@ ShellRoot {
         target: "launcher"
 
         function open() {
-            launcher.item.clear()
+            launcher.item.clear();
             mixer.item.visible = false;
             launcher.item.visible = !launcher.item.visible;
+        }
+    }
+
+    IpcHandler {
+        target: "lock"
+
+        function lock() {
+            lock.item.lock();
         }
     }
 }

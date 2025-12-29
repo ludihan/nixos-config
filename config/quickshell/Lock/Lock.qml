@@ -1,8 +1,12 @@
-import Quickshell
 import Quickshell.Wayland
+import QtQuick
+import Quickshell
 
-ShellRoot {
-    // This stores all the information shared between the lock surfaces on each screen.
+Scope {
+    function lock() {
+        lock.locked = true
+    }
+
     LockContext {
         id: lockContext
 
@@ -17,7 +21,7 @@ ShellRoot {
         id: lock
 
         // Lock the session immediately when quickshell starts.
-        locked: true
+        locked: false
 
         WlSessionLockSurface {
             LockSurface {

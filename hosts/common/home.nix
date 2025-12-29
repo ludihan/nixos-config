@@ -335,14 +335,6 @@
       bind i splitw -v
     '';
   };
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      ignore-empty-password = true;
-      indicator-caps-lock = true;
-      color = "262626";
-    };
-  };
   services.mako = {
     enable = true;
     extraConfig = ''
