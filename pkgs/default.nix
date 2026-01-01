@@ -1,4 +1,15 @@
 { inputs, pkgs }:
-{
-  todo = import ./todo.nix { inherit pkgs inputs; };
-}
+let
+  importPackages =
+    names:
+    builtins.listToAttrs (
+      map (name: {
+        name = name;
+        value = import (./. + "/${name}") pkgs;
+      }) names
+    );
+in
+importPackages [
+  "todo"
+  "bookokrat"
+]
