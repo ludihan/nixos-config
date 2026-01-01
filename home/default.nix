@@ -219,6 +219,7 @@
     typst
     tinymist
     nurl
+    nix-init
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
   ];
 
