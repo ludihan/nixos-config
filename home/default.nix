@@ -204,9 +204,7 @@
     nix-output-monitor
     nvd
     wl-mirror
-    reaper
-    vital
-    dexed
+    sunvox
     cmus
     kew
     nicotine-plus
