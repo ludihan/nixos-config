@@ -186,7 +186,6 @@
     mednafen
     lf
     pavucontrol
-    batsignal
     networkmanagerapplet
     unzip
     unrar

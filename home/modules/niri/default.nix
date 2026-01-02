@@ -8,7 +8,7 @@
 
     // spawn-at-startup "fcitx5"
     spawn-at-startup "nm-applet"
-    spawn-sh-at-startup "batsignal -b -w 30 -c 15 -d 5 -m 1 -I aefjlaksjd"
+    // spawn-sh-at-startup "batsignal -b -w 30 -c 15 -d 5 -m 1 -I aefjlaksjd"
     spawn-sh-at-startup "qs"
 
     output "HDMI-A-2" {
