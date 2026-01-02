@@ -19,11 +19,6 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    todo = {
-      url = "github:ludihan/todo";
-      flake = false;
-    };
   };
 
   outputs =
