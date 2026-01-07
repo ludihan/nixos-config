@@ -212,7 +212,7 @@
     file
     kdePackages.qtdeclarative
     socat
-    calibre
+    foliate
     htop
     typst
     tinymist
