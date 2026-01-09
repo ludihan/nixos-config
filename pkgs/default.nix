@@ -11,5 +11,6 @@ let
 in
 importPackages [
   "todo"
-    # "bookokrat"
+  "pixilang"
+  # "bookokrat"
 ]
