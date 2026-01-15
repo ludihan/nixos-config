@@ -14,11 +14,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    musnix = {
-      url = "github:musnix/musnix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -50,7 +45,6 @@
           specialArgs = { inherit inputs flakeLocation; };
           modules = [
             hostPath
-            inputs.musnix.nixosModules.musnix
           ];
         };
     in
