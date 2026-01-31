@@ -182,7 +182,7 @@
     gnome-text-editor
     nautilus
     krita
-    # love
+    love
     mednafen
     lf
     pavucontrol
