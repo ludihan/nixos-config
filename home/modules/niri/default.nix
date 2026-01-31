@@ -1,4 +1,4 @@
 { ... }:
 {
-  xdg.configFile."niri/config.kdl".source = ./config.kdl;
+  xdg.configFile."niri/config.kdl".text = builtins.readFile ./config.kdl;
 }
