@@ -49,7 +49,7 @@ Row {
 
                 if (event.WindowFocusChanged) {
                     if (event.WindowFocusChanged.id === null) {
-                        root.focusedWindow = "";
+                        root.focusedWindow = null;
                     }
                 }
             }
@@ -140,7 +140,7 @@ Row {
         }
 
         CustomText {
-            text: root.focusedWindow.title
+            text: root.focusedWindow ? root.focusedWindow.title : ""
             Layout.preferredHeight: 22
             Layout.fillWidth: true
             Layout.maximumWidth: 1000
