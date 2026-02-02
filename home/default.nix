@@ -183,6 +183,7 @@
     nautilus
     krita
     love
+    lua
     mednafen
     lf
     pavucontrol
