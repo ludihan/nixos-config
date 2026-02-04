@@ -340,7 +340,6 @@
       bind i splitw -v
     '';
   };
-  programs.zellij.enable = true;
   services.mako = {
     enable = true;
     extraConfig = ''
@@ -395,7 +394,6 @@
         nvim.source = link "nvim";
         npm.source = link "npm";
         quickshell.source = link "quickshell";
-        zellij.source = link "zellij";
       };
     userDirs = {
       enable = true;
