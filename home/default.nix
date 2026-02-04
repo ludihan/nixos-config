@@ -222,15 +222,14 @@
     vintagestory
     lutris
     quickemu
+    tmux
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.pixilang
     # inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.bookokrat
   ];
 
   programs.firefox.enable = true;
-
   programs.quickshell.enable = true;
-
   programs.foot = {
     enable = true;
     settings = {
@@ -316,30 +315,6 @@
   };
   programs.discord.enable = true;
   programs.home-manager.enable = true;
-  programs.tmux = {
-    enable = true;
-    extraConfig = ''
-      set-window-option -g mode-keys vi
-      set-option -g focus-events on
-      set-option -sg escape-time 10
-      set-option -g default-terminal "screen-256color"
-      bind C-p swapw -d -t -1
-      bind C-n swapw -d -t +1
-
-      bind h selectp -L
-      bind j selectp -D
-      bind k selectp -U
-      bind l selectp -R
-
-      bind -r H resizep -L 5
-      bind -r J resizep -D 5
-      bind -r K resizep -U 5
-      bind -r L resizep -R 5
-
-      bind o splitw -h
-      bind i splitw -v
-    '';
-  };
   services.mako = {
     enable = true;
     extraConfig = ''
@@ -394,6 +369,7 @@
         nvim.source = link "nvim";
         npm.source = link "npm";
         quickshell.source = link "quickshell";
+        tmux.source = link "tmux";
       };
     userDirs = {
       enable = true;
