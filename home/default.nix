@@ -222,6 +222,7 @@
     vintagestory
     lutris
     quickemu
+    opencode
     tmux
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.pixilang
