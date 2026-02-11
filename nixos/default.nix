@@ -81,6 +81,7 @@
     };
 
   networking.hostName = "nixos";
+  networking.firewall.enable = false;
 
   # Enable networking
   networking.networkmanager.enable = true;
