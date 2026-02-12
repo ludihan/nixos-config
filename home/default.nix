@@ -169,7 +169,6 @@
     uv
     blender
     vivid
-    osu-lazer-bin
     docker-compose
     docker-buildx
     hyprpicker
@@ -204,7 +203,6 @@
     nix-output-monitor
     nvd
     wl-mirror
-    sunvox
     cmus
     kew
     nicotine-plus
@@ -224,6 +222,24 @@
     quickemu
     opencode
     tmux
+
+    # music
+    reaper
+    vital
+    dexed
+    polyphone
+    sfizz
+    cardinal
+    openutau
+    airwindows
+    setbfree
+    x42-gmsynth
+    x42-avldrums
+    guitarix
+    drumgizmo
+    surge-XT
+    helm
+
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.pixilang
     # inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.bookokrat
