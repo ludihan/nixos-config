@@ -24,3 +24,4 @@ vim.opt.smartcase = true
 vim.opt.guicursor = ""
 
 vim.g.omni_sql_no_default_maps = 1
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup"  }
