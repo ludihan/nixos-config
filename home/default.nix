@@ -160,9 +160,6 @@
     # rustup
     # dotnet-sdk
     # go
-    gopls
-    nil
-    rust-analyzer
     godot
     nodejs
     python3
@@ -181,8 +178,6 @@
     gnome-text-editor
     nautilus
     krita
-    love
-    luajit
     mednafen
     lf
     pavucontrol
@@ -214,7 +209,6 @@
     foliate
     htop
     typst
-    tinymist
     nurl
     nix-init
     vintagestory
@@ -239,6 +233,18 @@
     drumgizmo
     surge-XT
     helm
+
+    # love gamedev
+    love
+    luajit
+    ldtk
+    tiled
+
+    # lsp servers
+    gopls
+    nil
+    rust-analyzer
+    tinymist
 
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
     inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.pixilang
