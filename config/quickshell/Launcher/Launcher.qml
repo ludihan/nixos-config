@@ -84,6 +84,9 @@ PanelWindow {
 
         ListView {
             id: appList
+            highlightFollowsCurrentItem: true
+            highlightMoveDuration: 0
+            highlightMoveVelocity: -1
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true
@@ -96,7 +99,8 @@ PanelWindow {
             }
 
             model: ScriptModel {
-                values: DesktopEntries.applications.values.filter(x => !x.keywords.includes("lsp-plugins")).filter(x => [x.name, x.genericName, x.execString, x.comment, x.execString, ...x.categories, ...x.keywords].map(x => x.toLowerCase()).some(x => x.includes(searchBox.text.toLowerCase())))
+                property var additionalFilters: (x => !x.keywords.includes("lsp-plugins"))
+                values: DesktopEntries.applications.values.filter(x => [x.name, x.genericName, x.execString, x.comment, x.execString, ...x.categories, ...x.keywords].map(x => x.toLowerCase()).some(x => x.includes(searchBox.text.toLowerCase())) && additionalFilters(x))
             }
             delegate: ItemDelegate {
                 id: delegateRoot
