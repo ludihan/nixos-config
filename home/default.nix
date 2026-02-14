@@ -233,6 +233,7 @@
     lsp-plugins
     carla
     calf
+    fluida-lv2
 
     # love gamedev
     love
