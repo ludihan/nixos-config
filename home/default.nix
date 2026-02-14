@@ -222,7 +222,6 @@
     vital
     dexed
     polyphone
-    sfizz
     cardinal
     openutau
     airwindows
