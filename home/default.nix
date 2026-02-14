@@ -233,6 +233,7 @@
     helm
     lsp-plugins
     carla
+    calf
 
     # love gamedev
     love
