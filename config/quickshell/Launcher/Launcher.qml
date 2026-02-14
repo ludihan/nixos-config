@@ -89,11 +89,14 @@ PanelWindow {
             clip: true
             boundsBehavior: Flickable.StopAtBounds
             moveDisplaced: Transition {
-                NumberAnimation { properties: "x,y"; duration: 0 }
+                NumberAnimation {
+                    properties: "x,y"
+                    duration: 0
+                }
             }
 
             model: ScriptModel {
-                values: DesktopEntries.applications.values.filter(x => [x.name, x.genericName, x.execString, x.comment, x.execString, ...x.categories, ...x.keywords].map(x => x.toLowerCase()).some(x => x.includes(searchBox.text.toLowerCase())))
+                values: DesktopEntries.applications.values.filter(x => !x.keywords.includes("lsp-plugins")).filter(x => [x.name, x.genericName, x.execString, x.comment, x.execString, ...x.categories, ...x.keywords].map(x => x.toLowerCase()).some(x => x.includes(searchBox.text.toLowerCase())))
             }
             delegate: ItemDelegate {
                 id: delegateRoot
