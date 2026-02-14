@@ -231,7 +231,6 @@
     x42-avldrums
     surge-XT
     helm
-    zynaddsubfx
     lsp-plugins
 
     # love gamedev
