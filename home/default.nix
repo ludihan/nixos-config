@@ -232,6 +232,7 @@
     surge-XT
     helm
     lsp-plugins
+    carla
 
     # love gamedev
     love
