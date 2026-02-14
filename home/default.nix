@@ -233,6 +233,8 @@
     drumgizmo
     surge-XT
     helm
+    zynaddsubfx
+    lsp-plugins
 
     # love gamedev
     love
