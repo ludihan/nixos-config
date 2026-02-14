@@ -229,8 +229,6 @@
     setbfree
     x42-gmsynth
     x42-avldrums
-    guitarix
-    drumgizmo
     surge-XT
     helm
     zynaddsubfx
