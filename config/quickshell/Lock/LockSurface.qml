@@ -11,8 +11,8 @@ Rectangle {
     color: "#222222"
 
     // Button {
-        // text: "Its not working, let me out"
-        // onClicked: context.unlocked()
+    // text: "Its not working, let me out"
+    // onClicked: context.unlocked()
     // }
 
     Label {
@@ -102,6 +102,7 @@ Rectangle {
         Label {
             visible: root.context.showFailure
             text: "Incorrect password"
+            color: "white"
         }
     }
 }
