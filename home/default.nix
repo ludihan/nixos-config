@@ -177,7 +177,7 @@
     papers
     gnome-text-editor
     nautilus
-    krita
+    # krita
     # mednafen
     lf
     pavucontrol
@@ -221,7 +221,7 @@
     reaper
     vital
     dexed
-    polyphone
+    # polyphone
     cardinal
     openutau
     airwindows
