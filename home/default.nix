@@ -178,7 +178,7 @@
     gnome-text-editor
     nautilus
     krita
-    mednafen
+    # mednafen
     lf
     pavucontrol
     networkmanagerapplet
@@ -198,11 +198,11 @@
     nix-output-monitor
     nvd
     wl-mirror
-    cmus
+    # cmus
     kew
     nicotine-plus
     ncdu
-    mangohud
+    # mangohud
     file
     kdePackages.qtdeclarative
     socat
@@ -213,7 +213,7 @@
     nix-init
     vintagestory
     lutris
-    quickemu
+    # quickemu
     opencode
     tmux
 
@@ -243,7 +243,7 @@
     # love gamedev
     love
     luajit
-    ldtk
+    # ldtk
     tiled
 
     # lsp servers
