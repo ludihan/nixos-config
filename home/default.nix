@@ -245,6 +245,7 @@
     luajit
     # ldtk
     tiled
+    aseprite
 
     # lsp servers
     gopls
