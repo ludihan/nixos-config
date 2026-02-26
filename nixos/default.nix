@@ -146,6 +146,15 @@
   programs.nautilus-open-any-terminal.terminal = "foot";
   services.gnome.sushi.enable = true;
 
+  programs.command-not-found.enable = false;
+
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
+    enableBashIntegration = false;
+  };
+
   programs.nix-ld.enable = true;
 
   # not present in home manager

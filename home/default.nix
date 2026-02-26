@@ -75,6 +75,8 @@
       };
   };
 
+  programs.command-not-found.enable = false;
+
   programs.bash = {
     enable = true;
     initExtra = ''
@@ -386,6 +388,13 @@
   programs.nh = {
     enable = true;
     flake = flakeLocation;
+  };
+
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
+    enableBashIntegration = false;
   };
 
   xdg = {
