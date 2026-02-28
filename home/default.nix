@@ -182,7 +182,6 @@
       wl-clipboard
       brightnessctl
       imv
-      inxi
       papers
       # krita
       # mednafen
@@ -194,11 +193,6 @@
       tuxpaint
       woomer
       xwayland-satellite
-      gst_all_1.gst-plugins-good
-      gst_all_1.gst-plugins-bad
-      gst_all_1.gst-plugins-ugly
-      gst_all_1.gst-libav
-      ffmpegthumbnailer
       nixfmt
       nixfmt-tree
       nix-output-monitor
