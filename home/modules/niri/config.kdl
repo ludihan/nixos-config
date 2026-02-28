@@ -139,8 +139,8 @@ binds {
     Mod+Shift+D hotkey-overlay-title="Open Web Browser: firefox" {
         spawn "firefox";
     }
-    Mod+Shift+E hotkey-overlay-title="Open File Manager: nautilus" {
-        spawn "nautilus";
+    Mod+Shift+E hotkey-overlay-title="Open File Manager: yazi" {
+        spawn-sh "foot yazi";
     }
     Mod+Shift+S hotkey-overlay-title="Open Mixer" {
         spawn-sh "qs ipc call mixer open";

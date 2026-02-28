@@ -184,8 +184,6 @@
       imv
       inxi
       papers
-      gnome-text-editor
-      nautilus
       # krita
       # mednafen
       pavucontrol

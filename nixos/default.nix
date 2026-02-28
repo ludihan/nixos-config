@@ -140,11 +140,6 @@
     gnome.gnome-keyring.enable = true;
   };
   security.polkit.enable = true;
-  services.gvfs.enable = true;
-
-  programs.nautilus-open-any-terminal.enable = true;
-  programs.nautilus-open-any-terminal.terminal = "foot";
-  services.gnome.sushi.enable = true;
 
   programs.command-not-found.enable = false;
 
