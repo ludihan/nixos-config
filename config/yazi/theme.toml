@@ -1,0 +1,16 @@
+[status]
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[icon]
+globs = []
+dirs  = []
+files = []
+exts  = []
+conds = []
+
+[indicator]
+padding = { open = "█", close = "█" }
+
+[flavor]
+dark = "gruvbox-dark"

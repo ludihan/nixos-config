@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   flakeLocation,
+  extraSoftware,
   ...
 }:
 {
@@ -147,118 +148,122 @@
 
   fonts.fontconfig.enable = true;
 
-  home.packages = with pkgs; [
-    discord
-    wget
-    curl
-    jq
-    jo
-    fd
-    ripgrep
-    bat
-    grim
-    slurp
-    gcc
-    # rustup
-    # dotnet-sdk
-    # go
-    godot
-    nodejs
-    python3
-    uv
-    blender
-    vivid
-    docker-compose
-    docker-buildx
-    hyprpicker
-    spotify
-    wl-clipboard
-    brightnessctl
-    imv
-    inxi
-    papers
-    gnome-text-editor
-    nautilus
-    # krita
-    # mednafen
-    lf
-    pavucontrol
-    networkmanagerapplet
-    unzip
-    unrar
-    zip
-    tuxpaint
-    woomer
-    xwayland-satellite
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-plugins-ugly
-    gst_all_1.gst-libav
-    ffmpegthumbnailer
-    nixfmt
-    nixfmt-tree
-    nix-output-monitor
-    nvd
-    wl-mirror
-    # cmus
-    kew
-    nicotine-plus
-    ncdu
-    # mangohud
-    file
-    kdePackages.qtdeclarative
-    socat
-    foliate
-    htop
-    typst
-    nurl
-    nix-init
-    vintagestory
-    lutris
-    # quickemu
-    opencode
-    tmux
+  home.packages =
+    with pkgs;
+    let
+      system = pkgs.stdenv.hostPlatform.system;
+      extra = builtins.mapAttrs (name: value: value.packages.${system}.default) extraSoftware;
+    in
+    [
+      discord
+      wget
+      curl
+      jq
+      jo
+      fd
+      ripgrep
+      bat
+      grim
+      slurp
+      gcc
+      # rustup
+      # dotnet-sdk
+      # go
+      godot
+      nodejs
+      python3
+      uv
+      blender
+      vivid
+      docker-compose
+      docker-buildx
+      hyprpicker
+      spotify
+      wl-clipboard
+      brightnessctl
+      imv
+      inxi
+      papers
+      gnome-text-editor
+      nautilus
+      # krita
+      # mednafen
+      pavucontrol
+      networkmanagerapplet
+      unzip
+      unrar
+      zip
+      tuxpaint
+      woomer
+      xwayland-satellite
+      gst_all_1.gst-plugins-good
+      gst_all_1.gst-plugins-bad
+      gst_all_1.gst-plugins-ugly
+      gst_all_1.gst-libav
+      ffmpegthumbnailer
+      nixfmt
+      nixfmt-tree
+      nix-output-monitor
+      nvd
+      wl-mirror
+      # cmus
+      kew
+      nicotine-plus
+      ncdu
+      # mangohud
+      file
+      kdePackages.qtdeclarative
+      socat
+      foliate
+      htop
+      typst
+      nurl
+      nix-init
+      vintagestory
+      lutris
+      # quickemu
+      opencode
+      tmux
 
-    ### music ###
-    reaper
-    vital
-    dexed
-    # polyphone
-    cardinal
-    openutau
-    airwindows
-    surge-xt
-    odin2
-    helm
-    lsp-plugins
-    carla
-    calf
-    fluida-lv2
-    decent-sampler
-    sfizz-ui
-    distrho-ports
-    # setbfree
-    # x42-gmsynth
-    # x42-avldrums
-    #############
+      ### music ###
+      reaper
+      vital
+      dexed
+      # polyphone
+      cardinal
+      openutau
+      airwindows
+      surge-xt
+      odin2
+      helm
+      lsp-plugins
+      carla
+      calf
+      fluida-lv2
+      decent-sampler
+      sfizz-ui
+      distrho-ports
+      # setbfree
+      # x42-gmsynth
+      # x42-avldrums
+      #############
 
-    # love gamedev
-    love
-    luajit
-    # ldtk
-    tiled
-    aseprite
+      # love gamedev
+      love
+      luajit
+      # ldtk
+      tiled
+      aseprite
 
-    # lsp servers
-    gopls
-    nil
-    rust-analyzer
-    tinymist
+      # lsp servers
+      gopls
+      nil
+      rust-analyzer
+      tinymist
 
-    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.todo
-    inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.pixilang
-    # inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.bookokrat
-  ];
+      extra.nilpomino
+      extra.todo
+    ];
 
   programs.firefox.enable = true;
   programs.quickshell.enable = true;
@@ -397,18 +402,21 @@
     enableBashIntegration = false;
   };
 
+  programs.yazi.enable = true;
+  programs.yazi.shellWrapperName = "y";
+
   xdg = {
     enable = true;
     configFile =
       let
-        link =
-          name: config.lib.file.mkOutOfStoreSymlink "${flakeLocation}/config/${name}";
+        link = name: config.lib.file.mkOutOfStoreSymlink "${flakeLocation}/config/${name}";
       in
       {
         nvim.source = link "nvim";
         npm.source = link "npm";
         quickshell.source = link "quickshell";
         tmux.source = link "tmux";
+        yazi.source = link "yazi";
       };
     userDirs = {
       enable = true;

@@ -19,6 +19,16 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nilpomino = {
+      url = "github:ludihan/nilpomino";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    todo = {
+      url = "github:ludihan/todo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -33,11 +43,14 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       flakeLocation = "/home/ludihan/.nixos-config";
+      extraSoftware = {
+        inherit (inputs) nilpomino todo;
+      };
       hmBase =
         hostPath:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs flakeLocation; };
+          extraSpecialArgs = { inherit inputs flakeLocation extraSoftware; };
           modules = [
             hostPath
             nix-index-database.homeModules.nix-index
@@ -66,8 +79,6 @@
       };
 
       templates = inputs.templates;
-
-      packages.${system} = import ./pkgs { inherit inputs pkgs; };
 
       formatter.${system} = pkgs.nixfmt-rfc-style;
     };
