@@ -109,7 +109,14 @@ PanelWindow {
 
                 function launchApp() {
                     console.log("Launching: " + modelData.name);
-                    modelData.execute();
+                    if (!modelData.runInTerminal) {
+                        modelData.execute();
+                    } else {
+                        Quickshell.execDetached({
+                            command: ["foot", ...modelData.command],
+                            workingDirectory: modelData.workingDirectory
+                        });
+                    }
                     root.closeWindow();
                 }
 
