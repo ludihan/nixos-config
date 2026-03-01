@@ -9,6 +9,8 @@ import qs.Mixer
 import qs.Launcher
 import qs.ReloadPopup
 import qs.Lock
+import qs.NotificationPopup
+
 
 ShellRoot {
     Loader {
@@ -41,12 +43,13 @@ ShellRoot {
     }
 
     Loader {
-        ReloadPopup {}
+        id: lock
+        sourceComponent: Lock {}
     }
 
     Loader {
-        id: lock
-        sourceComponent: Lock {}
+        id: notificationPopup
+        sourceComponent: NotificationPopup {}
     }
 
     IpcHandler {

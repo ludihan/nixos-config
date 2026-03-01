@@ -86,12 +86,6 @@ PanelWindow {
                                     font.pixelSize: 18
                                     onClicked: mpris.modelData.quit()
                                 }
-                                Button {
-                                    text: "Show album art"
-                                    font.family: Config.fontFamily
-                                    font.pixelSize: 18
-                                    onClicked: art.showArt = !art.showArt
-                                }
                             }
                             RowLayout {
                                 Button {
@@ -119,13 +113,6 @@ PanelWindow {
                                     onClicked: mpris.modelData.next()
                                 }
                             }
-                        }
-                        Image {
-                            id: art
-                            property bool showArt: true
-                            Layout.maximumWidth: 250
-                            Layout.maximumHeight: 250
-                            source: showArt ? mpris.modelData.trackArtUrl : ""
                         }
                     }
                 }

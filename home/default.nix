@@ -344,21 +344,6 @@
   };
   programs.discord.enable = true;
   programs.home-manager.enable = true;
-  services.mako = {
-    enable = true;
-    extraConfig = ''
-      default-timeout=10000
-      background-color=#222222
-      border-color=#666666
-      text-color=#ffffff
-
-      [urgency=low]
-      default-timeout=5000
-
-      [urgency=critical]
-      ignore-timeout=1
-    '';
-  };
 
   services.easyeffects.enable = true;
 
