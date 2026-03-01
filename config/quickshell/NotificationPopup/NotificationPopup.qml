@@ -7,6 +7,13 @@ import qs
 
 Scope {
     id: root
+
+    property int notificationAreaHeight: {
+        const count = server.trackedNotifications.values.length;
+        const visibleCount = Math.min(count, 5);
+        return visibleCount * 60 + (count > 5 ? 50 : 0);
+    }
+
     NotificationServer {
         id: server
         onNotification: n => {
@@ -21,8 +28,18 @@ Scope {
         margins.top: 10
         margins.right: 10
         implicitWidth: 300
-        implicitHeight: 350
+        implicitHeight: notificationAreaHeight
         color: "transparent"
+
+        mask: Region {
+            Region { x: 0; y: 0; width: server.trackedNotifications.values.length > 0 ? 300 : 0; height: 50 }
+            Region { x: 0; y: 60; width: server.trackedNotifications.values.length > 1 ? 300 : 0; height: 50 }
+            Region { x: 0; y: 120; width: server.trackedNotifications.values.length > 2 ? 300 : 0; height: 50 }
+            Region { x: 0; y: 180; width: server.trackedNotifications.values.length > 3 ? 300 : 0; height: 50 }
+            Region { x: 0; y: 240; width: server.trackedNotifications.values.length > 4 ? 300 : 0; height: 50 }
+            Region { x: 0; y: 300; width: server.trackedNotifications.values.length > 5 ? 300 : 0; height: 50 }
+        }
+
         exclusiveZone: 0
 
         Item {
