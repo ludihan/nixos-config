@@ -46,7 +46,7 @@ Scope {
             anchors.fill: parent
 
             Repeater {
-                model: server.trackedNotifications.values.slice(0, 5)
+                model: server.trackedNotifications.values.slice(-5).reverse()
                 Rectangle {
                     x: 0
                     y: index * 60
