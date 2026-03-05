@@ -177,6 +177,25 @@ binds {
         spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
     }
 
+    Mod+BracketRight allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ -l 1";
+    }
+    Mod+BracketLeft allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1";
+    }
+    Mod+Shift+BracketLeft allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ -l 1";
+    }
+    Mod+Shift+BracketRight allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- -l 1";
+    }
+    Mod+Ctrl+BracketLeft allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    }
+    Mod+Ctrl+BracketRight allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+    }
+
     XF86MonBrightnessUp allow-when-locked=true {
         spawn "brightnessctl" "--class=backlight" "set" "+10%";
     }
