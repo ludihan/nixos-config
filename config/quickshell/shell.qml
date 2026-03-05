@@ -11,7 +11,6 @@ import qs.ReloadPopup
 import qs.Lock
 import qs.NotificationPopup
 
-
 ShellRoot {
     Loader {
         id: audioOSD
@@ -27,7 +26,12 @@ ShellRoot {
     Loader {
         id: mixer
 
-        sourceComponent: Mixer {}
+        sourceComponent: Mixer {
+            onEscape: () => {
+                mixer.item.visible = false;
+                audioOSD.active = !audioOSD.active;
+            }
+        }
         Component.onCompleted: {
             mixer.item.visible = false;
         }

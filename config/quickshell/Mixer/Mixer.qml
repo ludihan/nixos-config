@@ -13,12 +13,13 @@ PanelWindow {
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
     implicitWidth: 800
     implicitHeight: 800
+    required property var onEscape
     // match the system theme background color
     color: "#1A1A1A"
 
     ScrollView {
         focus: true
-        Keys.onEscapePressed: root.visible = false
+        Keys.onEscapePressed: onEscape()// root.visible = false
         anchors.fill: parent
         contentWidth: availableWidth
 
