@@ -12,4 +12,6 @@
   ];
   networking.hostName = lib.mkForce "nixos-desktop";
   services.logind.settings.Login.HandlePowerKey = "ignore";
+  services.logind.settings.Login.HandleSuspendKey = "ignore";
+  services.logind.settings.Login.HandleHibernateKey = "ignore";
 }
