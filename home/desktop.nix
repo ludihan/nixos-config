@@ -26,6 +26,7 @@
         mouse {
             accel-profile "flat"
         }
+        disable-power-key-handling
     }
   '';
 }
