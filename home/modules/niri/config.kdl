@@ -183,10 +183,10 @@ binds {
     Mod+BracketLeft allow-when-locked=true {
         spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- -l 1";
     }
-    Mod+Shift+BracketLeft allow-when-locked=true {
+    Mod+Shift+BracketRight allow-when-locked=true {
         spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ -l 1";
     }
-    Mod+Shift+BracketRight allow-when-locked=true {
+    Mod+Shift+BracketLeft allow-when-locked=true {
         spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- -l 1";
     }
     Mod+Ctrl+BracketLeft allow-when-locked=true {
