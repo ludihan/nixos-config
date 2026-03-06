@@ -240,12 +240,15 @@
       # x42-avldrums
       #############
 
+      sunvox
+
       # love gamedev
       love
       luajit
       # ldtk
       tiled
       aseprite
+      krita
 
       # lsp servers
       gopls
