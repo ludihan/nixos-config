@@ -199,7 +199,7 @@
       nvd
       wl-mirror
       # cmus
-      deadbeef
+      fooyin
       nicotine-plus
       ncdu
       # mangohud
