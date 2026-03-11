@@ -219,28 +219,28 @@
 
       ### music ###
       reaper
-      vital
-      dexed
+      # vital
+      # dexed
       # polyphone
-      cardinal
-      openutau
-      airwindows
+      # cardinal
+      # openutau
+      # airwindows
       surge-xt
-      odin2
-      helm
-      lsp-plugins
-      carla
-      calf
+      # odin2
+      # helm
+      # lsp-plugins
+      # carla
+      # calf
       fluida-lv2
       decent-sampler
       sfizz-ui
-      distrho-ports
+      # distrho-ports
       # setbfree
       # x42-gmsynth
       # x42-avldrums
       #############
 
-      sunvox
+      # sunvox
 
       # love gamedev
       love
