@@ -251,10 +251,28 @@
       krita
 
       # lsp servers
-      gopls
+      # julials
+      # gopls
+      # hls
       nil
-      rust-analyzer
+      # rust_analyzer
+      kdePackages.qtlanguageserver
       tinymist
+      vscode-langservers-extracted
+      emmet-language-server
+      lua-language-server
+      python313Packages.python-lsp-server
+      taplo
+      # templ
+      vtsls
+      # vue_ls
+      # svelte
+      # bashls
+      # dockerls
+      # docker_compose_language_service
+      marksman
+      yaml-language-server
+      # omnisharp
 
       extra.nilpomino
       extra.todo

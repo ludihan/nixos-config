@@ -1,4 +1,3 @@
-local util = require 'lspconfig.util'
 -- Julia
 -- vim.lsp.enable('julials')
 
@@ -46,8 +45,29 @@ vim.lsp.config('vue_ls', vue_ls_config)
 vim.lsp.config('ts_ls', ts_ls_config)
 vim.lsp.enable({ 'vtsls', 'vue_ls' }) -- If using `ts_ls` replace `vtsls` to `ts_ls`
 
-vim.lsp.enable('gopls')
-vim.lsp.enable('nil_ls')
-vim.lsp.enable('rust_analyzer')
-vim.lsp.enable('qmlls')
-vim.lsp.enable('tinymist')
+vim.lsp.enable({
+    -- 'julials',
+    'gopls',
+    -- 'hls,',
+    'nil_ls',
+    'rust_analyzer',
+    'qmlls',
+    'tinymist',
+    "cssls",
+    "emmet_language_server",
+    "html",
+    "lua_ls",
+    "pylsp",
+    "taplo",
+    "templ",
+    "vtsls",
+    -- "vue_ls",
+    -- "svelte",
+    -- "bashls",
+    "jsonls",
+    -- "dockerls",
+    -- "docker_compose_language_service",
+    "marksman",
+    "yamlls",
+    -- "omnisharp"
+})
