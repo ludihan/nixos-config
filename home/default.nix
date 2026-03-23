@@ -122,6 +122,7 @@
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
     };
+    gtk4.theme = config.gtk.theme;
     #iconTheme = {
     #name = "Obsidian-Sand";
     #};
@@ -288,7 +289,7 @@
         resize-by-cells = false;
       };
       # gruvbox
-      colors = {
+      colors-dark = {
         background = "282828";
         foreground = "ebdbb2";
         regular0 = "282828";
@@ -309,7 +310,7 @@
         bright7 = "ebdbb2";
       };
 
-      colors2 = {
+      colors-light = {
         background = "fbf1c7";
         foreground = "3c3836";
         regular0 = "fbf1c7";
@@ -421,6 +422,7 @@
       createDirectories = true;
       desktop = null;
       publicShare = null;
+      setSessionVariables = true;
     };
     mime.enable = true;
     mimeApps = {
