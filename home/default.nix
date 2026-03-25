@@ -423,6 +423,7 @@
       createDirectories = true;
       desktop = null;
       publicShare = null;
+      templates = null;
       setSessionVariables = true;
     };
     mime.enable = true;
