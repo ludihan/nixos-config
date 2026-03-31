@@ -202,6 +202,14 @@
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
   };
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
+  environment.systemPackages = [
+    pkgs.libheif
+    pkgs.libheif.out
+  ];
+  environment.pathsToLink = [ "share/thumbnailers" ];
 
   console.earlySetup = true;
 

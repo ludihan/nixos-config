@@ -28,6 +28,16 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      (final: prev: {
+        nautilus = prev.nautilus.overrideAttrs (nprev: {
+          buildInputs =
+            nprev.buildInputs
+            ++ (with pkgs.gst_all_1; [
+              gst-plugins-good
+              gst-plugins-bad
+            ]);
+        });
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -275,10 +285,13 @@
       marksman
       yaml-language-server
       # omnisharp
-
+      nautilus
       extra.nilpomino
       extra.todo
     ];
+  services.udiskie = {
+    enable = true;
+  };
 
   programs.firefox.enable = true;
   programs.quickshell.enable = true;
@@ -402,9 +415,6 @@
     enableBashIntegration = false;
   };
 
-  programs.yazi.enable = true;
-  programs.yazi.shellWrapperName = "y";
-
   xdg = {
     enable = true;
     configFile =
@@ -416,14 +426,12 @@
         npm.source = link "npm";
         quickshell.source = link "quickshell";
         tmux.source = link "tmux";
-        yazi.source = link "yazi";
       };
     userDirs = {
       enable = true;
       createDirectories = true;
       desktop = null;
       publicShare = null;
-      templates = null;
       setSessionVariables = true;
     };
     mime.enable = true;
