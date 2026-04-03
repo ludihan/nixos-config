@@ -22,9 +22,11 @@
     "sd_mod"
     "sr_mod"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "nvidia" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [
+    config.boot.kernelPackages.nvidiaPackages.legacy_580
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4085e6b7-4abe-413e-b0eb-89de2b344015";
