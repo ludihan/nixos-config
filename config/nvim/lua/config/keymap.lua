@@ -2,6 +2,24 @@
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+local function set_wrap()
+    vim.opt.wrap = true
+    vim.opt.linebreak = true
+    --vim.keymap.set('n', 'j', 'gj')
+    --vim.keymap.set('n', 'k', 'gk')
+end
+
+local function set_nowrap()
+    vim.opt.wrap = false
+    vim.opt.linebreak = false
+    --vim.keymap.set('n', 'j', 'j')
+    --vim.keymap.set('n', 'k', 'k')
+end
+
+-- Toggle wrap
+vim.keymap.set('n', '<leader>w', set_wrap)
+vim.keymap.set('n', '<leader>W', set_nowrap)
+
 -- Recenter
 vim.keymap.set("n", "J", "mzJ`z")
 -- vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -44,7 +62,7 @@ vim.keymap.set("n", "<leader>s",
 )
 
 -- format this
-vim.keymap.set("n", "<leader>w", "<CMD>%s/\\s\\+$//e<CR><CMD>:nohlsearch<CR>")
+vim.keymap.set("n", "<leader>t", "<CMD>%s/\\s\\+$//e<CR><CMD>:nohlsearch<CR>")
 
 -- Navigate tabs
 vim.keymap.set('n', '<A-o>', '<cmd>tabnext<cr>')
@@ -73,3 +91,12 @@ vim.keymap.set('n', '<A-I>', '<cmd>tabmove -1<cr>')
 --vim.keymap.set("i", "[<CR>", "[<CR>]<Esc>O")
 --vim.keymap.set("i", "{<CR>", "{<CR>}<Esc>O")
 -- vim.keymap.set("i", "{;<CR>", "{<CR>};<Esc>O<Tab>")
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>f", builtin.find_files)
+vim.keymap.set("n", "<leader>g", builtin.live_grep)
+vim.keymap.set("n", "<leader>b", builtin.buffers)
+vim.keymap.set("n", "<leader>z", builtin.help_tags)
+vim.keymap.set("n", "<leader>h", builtin.diagnostics)
+
+vim.keymap.set("n", "-", "<CMD>Oil<CR>")

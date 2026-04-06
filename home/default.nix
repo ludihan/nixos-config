@@ -353,6 +353,10 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    plugins = [
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+      pkgs.vimPlugins.ts-autotag-nvim
+    ];
   };
   programs.gh = {
     enable = true;
