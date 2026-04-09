@@ -189,7 +189,7 @@
       docker-compose
       docker-buildx
       hyprpicker
-      spotify
+      # spotify
       wl-clipboard
       brightnessctl
       imv
@@ -224,7 +224,6 @@
       nurl
       nix-init
       vintagestory
-      lutris
       # quickemu
       opencode
       tmux
@@ -461,5 +460,5 @@
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
 }
