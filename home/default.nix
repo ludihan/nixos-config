@@ -181,6 +181,7 @@
       # dotnet-sdk
       # go
       godot
+      material-maker
       nodejs
       python3
       uv
