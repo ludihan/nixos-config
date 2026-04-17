@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   flakeLocation,
   extraSoftware,
   ...
@@ -230,8 +229,13 @@
       godot
       material-maker
       nodejs
-      python3
+      (python3.withPackages (
+        ppkgs: with ppkgs; [
+          python-lsp-server
+        ]
+      ))
       uv
+      go
       blender
       vivid
       docker-compose
@@ -311,16 +315,15 @@
 
       # lsp servers
       # julials
-      # gopls
       # hls
       nil
+      gopls
       # rust_analyzer
       kdePackages.qtlanguageserver
       tinymist
       vscode-langservers-extracted
       emmet-language-server
       lua-language-server
-      python313Packages.python-lsp-server
       taplo
       # templ
       vtsls
