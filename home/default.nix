@@ -248,7 +248,7 @@
       papers
       # krita
       # mednafen
-      osu-lazer-bin
+      # osu-lazer-bin
       pavucontrol
       networkmanagerapplet
       unzip
