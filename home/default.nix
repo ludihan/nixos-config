@@ -259,6 +259,7 @@
       xwayland-satellite
       nixfmt
       nixfmt-tree
+      tree
       nix-output-monitor
       nvd
       wl-mirror
