@@ -12,27 +12,28 @@ vim.pack.add({
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
-  desc = "Try to enable tree-sitter syntax highlighting",
-  pattern = "*",
-  callback = function()
-    pcall(function() vim.treesitter.start() end)
-  end,
+    group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
+    desc = "Try to enable tree-sitter syntax highlighting",
+    pattern = "*",
+    callback = function()
+        pcall(function() vim.treesitter.start() end)
+    end,
 })
 
 require('nvim-ts-autotag').setup({
-  opts = {
-    enable_close = true, -- Auto close tags
-    enable_rename = true, -- Auto rename pairs of tags
-    enable_close_on_slash = true -- Auto close on trailing </
-  },
+    opts = {
+        enable_close = true,         -- Auto close tags
+        enable_rename = true,        -- Auto rename pairs of tags
+        enable_close_on_slash = true -- Auto close on trailing </
+    },
 })
 
 require("gruvbox").setup()
 vim.cmd.colorscheme('gruvbox')
 
-require("snacks").setup()
-require("snacks.bigfile").setup()
+require("snacks").setup({
+    bigfile = { enabled = true }
+})
 
 require("oil").setup()
 
