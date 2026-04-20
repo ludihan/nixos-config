@@ -7,6 +7,17 @@ vim.pack.add({
     'https://github.com/hiphish/rainbow-delimiters.nvim',
     'https://github.com/folke/snacks.nvim',
     'https://github.com/Saghen/blink.cmp',
+    -- 'https://github.com/nvim-treesitter/nvim-treesitter',
+    'https://github.com/windwp/nvim-ts-autotag',
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
+  desc = "Try to enable tree-sitter syntax highlighting",
+  pattern = "*",
+  callback = function()
+    pcall(function() vim.treesitter.start() end)
+  end,
 })
 
 require("gruvbox").setup()
