@@ -406,6 +406,9 @@
     plugins = [
       pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     ];
+    initLua = ''
+      require("config")
+    '';
   };
   programs.gh = {
     enable = true;
@@ -475,7 +478,10 @@
         link = name: config.lib.file.mkOutOfStoreSymlink "${flakeLocation}/config/${name}";
       in
       {
-        nvim.source = link "nvim";
+        "nvim/ftplugin".source = link "nvim/ftplugin";
+        "nvim/lua".source = link "nvim/lua";
+        "nvim/.luarc.json".source = link "nvim/.luarc.json";
+        "nvim/nvim-pack-lock.json".source = link "nvim/nvim-pack-lock.json";
         npm.source = link "npm";
         quickshell.source = link "quickshell";
         tmux.source = link "tmux";
