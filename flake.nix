@@ -20,11 +20,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nilpomino = {
-      url = "github:ludihan/nilpomino";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     todo = {
       url = "github:ludihan/todo";
       inputs.nixpkgs.follows = "nixpkgs";

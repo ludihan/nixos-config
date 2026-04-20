@@ -337,7 +337,6 @@
       yaml-language-server
       # omnisharp
       nautilus
-      extra.nilpomino
       extra.todo
     ];
   services.udiskie = {
