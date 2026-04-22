@@ -207,10 +207,6 @@
 
   home.packages =
     with pkgs;
-    let
-      system = pkgs.stdenv.hostPlatform.system;
-      extra = builtins.mapAttrs (name: value: value.packages.${system}.default) extraSoftware;
-    in
     [
       discord
       wget
@@ -337,7 +333,6 @@
       yaml-language-server
       # omnisharp
       nautilus
-      extra.todo
     ];
   services.udiskie = {
     enable = true;

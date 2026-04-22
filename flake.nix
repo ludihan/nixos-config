@@ -32,24 +32,23 @@
       nixpkgs,
       home-manager,
       nix-index-database,
+      todo,
       ...
     }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       flakeLocation = "/home/ludihan/.nixos-config";
-      extraSoftware = {
-        inherit (inputs) nilpomino todo;
-      };
       hmBase =
         hostPath:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs flakeLocation extraSoftware; };
+          extraSpecialArgs = { inherit inputs flakeLocation; };
           modules = [
             hostPath
             nix-index-database.homeModules.nix-index
             { programs.nix-index-database.comma.enable = true; }
+            todo.homeModules.todo
           ];
         };
       noBase =
