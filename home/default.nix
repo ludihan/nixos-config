@@ -205,135 +205,132 @@
 
   fonts.fontconfig.enable = true;
 
-  home.packages =
-    with pkgs;
-    [
-      discord
-      wget
-      curl
-      jq
-      jo
-      fd
-      ripgrep
-      bat
-      grim
-      slurp
-      gcc
-      # rustup
-      # dotnet-sdk
-      # go
-      godot
-      material-maker
-      nodejs
-      (python3.withPackages (
-        ppkgs: with ppkgs; [
-          python-lsp-server
-        ]
-      ))
-      uv
-      go
-      hugo
-      blender
-      vivid
-      docker-compose
-      docker-buildx
-      hyprpicker
-      # spotify
-      wl-clipboard
-      brightnessctl
-      imv
-      papers
-      # krita
-      # mednafen
-      # osu-lazer-bin
-      pavucontrol
-      networkmanagerapplet
-      unzip
-      unrar
-      zip
-      tuxpaint
-      woomer
-      xwayland-satellite
-      nixfmt
-      nixfmt-tree
-      tree
-      nix-output-monitor
-      nvd
-      wl-mirror
-      # cmus
-      fooyin
-      nicotine-plus
-      ncdu
-      # mangohud
-      file
-      kdePackages.qtdeclarative
-      socat
-      foliate
-      htop
-      typst
-      nurl
-      nix-init
-      vintagestory
-      # quickemu
-      opencode
-      tmux
+  home.packages = with pkgs; [
+    discord
+    wget
+    curl
+    jq
+    jo
+    fd
+    ripgrep
+    bat
+    grim
+    slurp
+    gcc
+    # rustup
+    # dotnet-sdk
+    # go
+    godot
+    material-maker
+    nodejs
+    (python3.withPackages (
+      ppkgs: with ppkgs; [
+        python-lsp-server
+      ]
+    ))
+    uv
+    go
+    hugo
+    blender
+    vivid
+    docker-compose
+    docker-buildx
+    hyprpicker
+    # spotify
+    wl-clipboard
+    brightnessctl
+    imv
+    papers
+    # krita
+    # mednafen
+    # osu-lazer-bin
+    pavucontrol
+    networkmanagerapplet
+    unzip
+    unrar
+    zip
+    tuxpaint
+    woomer
+    xwayland-satellite
+    nixfmt
+    nixfmt-tree
+    tree
+    nix-output-monitor
+    nvd
+    wl-mirror
+    # cmus
+    fooyin
+    nicotine-plus
+    ncdu
+    # mangohud
+    file
+    kdePackages.qtdeclarative
+    socat
+    foliate
+    htop
+    typst
+    nurl
+    nix-init
+    vintagestory
+    # quickemu
+    opencode
+    tmux
 
-      ### music ###
-      reaper
-      # vital
-      # dexed
-      # polyphone
-      # cardinal
-      # openutau
-      # airwindows
-      surge-xt
-      # odin2
-      # helm
-      # lsp-plugins
-      # carla
-      # calf
-      fluida-lv2
-      decent-sampler
-      sfizz-ui
-      # distrho-ports
-      # setbfree
-      # x42-gmsynth
-      # x42-avldrums
-      # sunvox
-      #############
+    ### music ###
+    reaper
+    # vital
+    # dexed
+    # polyphone
+    # cardinal
+    # openutau
+    # airwindows
+    surge-xt
+    # odin2
+    # helm
+    # lsp-plugins
+    # carla
+    # calf
+    fluida-lv2
+    decent-sampler
+    sfizz-ui
+    # distrho-ports
+    # setbfree
+    # x42-gmsynth
+    # x42-avldrums
+    # sunvox
+    #############
 
+    # love
+    # luajit
+    # ldtk
+    # tiled
+    aseprite
+    krita
 
-      # love
-      # luajit
-      # ldtk
-      # tiled
-      aseprite
-      krita
-
-      # lsp servers
-      # julials
-      # hls
-      nil
-      gopls
-      # rust_analyzer
-      kdePackages.qtlanguageserver
-      tinymist
-      vscode-langservers-extracted
-      emmet-language-server
-      lua-language-server
-      taplo
-      # templ
-      vtsls
-      # vue_ls
-      # svelte
-      # bashls
-      # dockerls
-      # docker_compose_language_service
-      marksman
-      yaml-language-server
-      # omnisharp
-      nautilus
-    ];
+    # lsp servers
+    # julials
+    # hls
+    nil
+    gopls
+    # rust_analyzer
+    kdePackages.qtlanguageserver
+    tinymist
+    vscode-langservers-extracted
+    emmet-language-server
+    lua-language-server
+    taplo
+    # templ
+    vtsls
+    # vue_ls
+    # svelte
+    # bashls
+    # dockerls
+    # docker_compose_language_service
+    marksman
+    yaml-language-server
+    # omnisharp
+    nautilus
+  ];
   services.udiskie = {
     enable = true;
   };
