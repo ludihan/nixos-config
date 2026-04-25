@@ -232,6 +232,7 @@
       ))
       uv
       go
+      hugo
       blender
       vivid
       docker-compose
