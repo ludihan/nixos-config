@@ -95,7 +95,7 @@ Row {
                     width: 22
                     height: 22
 
-                    color: ws.is_active ? "#4F4F4F" : "#1A1A1A"
+                    color: ws.is_active ? "#4F4F4F" : "black"
 
                     CustomText {
                         anchors.centerIn: parent

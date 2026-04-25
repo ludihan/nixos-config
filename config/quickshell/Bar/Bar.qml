@@ -112,7 +112,7 @@ Scope {
 
             Rectangle {
                 anchors.fill: parent
-                color: Config.background
+                color: "black"
 
                 RowLayout {
                     anchors.fill: parent
