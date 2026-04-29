@@ -142,7 +142,10 @@
     enableBashIntegration = false;
   };
 
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = pkgs.steam-run.args.multiPkgs pkgs;
+  };
 
   # not present in home manager
   programs.niri.enable = true;
